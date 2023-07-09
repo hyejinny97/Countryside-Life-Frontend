@@ -1,0 +1,139 @@
+@import '../abstracts/variables';
+
+.Navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $secondary-light;
+    height: 5rem;
+
+    &__wrap {
+        display: grid;
+        grid-template-columns: 6rem 2fr 1fr;
+        align-items: center;
+        
+        @media screen and (max-width:$sm) {
+            display: block;
+        }
+    }
+
+    &__head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        height: 3rem;
+    }
+
+    &__icon-burger {
+        display: none;
+        font-size: 2rem;
+        cursor: pointer;
+
+        @media screen and (max-width:$sm) {
+            display: block;
+        }
+    }
+
+    &__body {
+        & .Menu__list {
+            font-size: 1.1rem;
+        }
+
+        & .Menu__item {
+            padding: 0 3vw;
+            font-weight: 700; 
+        }
+
+        & .Menu__item a {
+            &:hover {
+                color: $primary-dark;
+            }
+        }
+
+        @media screen and (max-width:$sm) {
+            display: none;
+        }
+    }
+
+    &__foot {
+        justify-self: end;
+
+        @media screen and (max-width:$sm) {
+            display: none;
+        }
+    }
+
+    &__before-login {
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__utils-link {
+        padding-left: 1rem;
+
+        &:hover {
+            font-weight: 600;
+        }
+    }
+
+    &__after-login {
+        position: relative;
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__icons {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__icon-user {
+        margin-right: 0.1rem;
+        font-size: 2.5rem;
+        color: $secondary;
+    }
+
+    &__icon-down {
+        font-size: 1.2rem;
+        color: $secondary;
+    }
+
+    &__user-info {
+        position: absolute;
+        right: 0;
+        top: calc(100% + 1.2rem);
+        min-width: 10rem;
+        border-radius: 0.5rem;
+        box-shadow: 0.1rem 0.1rem 0.5rem $secondary;
+        z-index: 10000;
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__user-name {
+        padding: 1rem 1rem 0 1rem;
+
+        &--bold {
+            font-weight: 600;
+        }
+    }
+
+    &__mypage {
+        padding: 1rem;
+    }
+
+    &__logout-link {
+        padding: 0.5rem 1rem;
+        background-color: $secondary-light;
+        text-align: center;
+        border-radius: 0 0 0.5rem 0.5rem;
+    }
+}
