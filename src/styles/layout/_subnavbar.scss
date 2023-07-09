@@ -1,0 +1,90 @@
+@import '../abstracts/variables';
+
+.SubNavbar {
+    display: none;
+    padding: 2rem 1rem;
+    border-bottom: 1px solid $secondary-light;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: 0 1rem 1rem 0.5rem $secondary-light;
+    font-size: 0.9rem;
+
+    @media screen and (max-width:$sm) {
+        display: block;
+    }
+
+    &__user {
+        display: none;
+        margin-bottom: 1rem;
+    
+        @media screen and (max-width:$sm) {
+            display: block;
+        }
+    }
+
+    &__before-login {
+        display: grid;
+        grid-template-columns: 1fr repeat(2, minmax(70px, auto));
+        column-gap: 0.1rem;
+        align-items: center;
+        color: $secondary;
+
+        & a {
+            justify-self: end;
+            padding: 0.1rem 0.5rem;
+            border: 1px solid $secondary;
+            border-radius: 0.5rem;
+            color: $secondary;
+        }
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__after-login {
+        display: grid;
+        grid-template-columns: repeat(1, minmax(2rem, auto)) 3fr 2fr;
+        column-gap: 0.5rem;
+        align-items: center;
+
+        &--hidden {
+            display: none;
+        }
+    }
+
+    &__icon-user {
+        font-size: 2rem;
+        color: $secondary;
+    }
+
+    &__user-name {
+        &--bold {
+            font-weight: 600;
+            
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__logout {
+        justify-self: end;
+
+        & a {
+            padding: 0.1rem 0.5rem;
+            border: 1px solid $secondary;
+            border-radius: 0.5rem;
+            color: $secondary;
+        }
+    }
+
+    & .Menu__item {
+        margin-bottom: 0.5rem;
+    }
+
+    & .Menu__item a {
+        &:hover {
+            color: $primary-dark;
+        }
+    }
+}

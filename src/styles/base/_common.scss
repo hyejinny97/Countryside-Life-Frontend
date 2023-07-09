@@ -1,0 +1,44 @@
+@import '../abstracts/variables';
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 3rem;
+    // border: 1px solid red;
+    font-size: 1rem;
+    color: $secondary-dark;
+
+    @media screen and (max-width:$md) {
+        & {
+            padding: 0 2rem;
+            font-size: 0.9rem;
+        }
+    }
+
+    @media screen and (max-width:$sm) {
+        & {
+            padding: 0 1rem;
+            font-size: 0.85rem;
+        }
+    }
+}
+
+.container__wrap {
+    width: 100%;
+    max-width: $lg-max-width;
+    // border: 1px solid blue;
+
+    @media screen and (max-width:$md) {
+        & {
+            max-width: $md-max-width;
+        }
+    }
+
+    @media screen and (max-width:$sm) {
+        & {
+            max-width: $sm-max-width;
+        }
+    }
+}
