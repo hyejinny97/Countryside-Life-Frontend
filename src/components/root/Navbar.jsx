@@ -6,7 +6,7 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 import logo from '@assets/logo.png';
 import { SubNavbar } from '@components/root';
 import { Menu } from '@components/ui';
-import { menuData } from '@datas/root';
+import { navbarMenuData } from '@datas/root';
 
 function Navbar() {
     const [showUserInfo, setShowUserInfo] = useState(false);
@@ -20,7 +20,7 @@ function Navbar() {
     }
 
     return (
-        <>
+        <div>
             <nav className='Navbar container'>
                 <div className='Navbar__wrap container__wrap'>
                     <section className='Navbar__head'>
@@ -28,7 +28,7 @@ function Navbar() {
                         <RxHamburgerMenu className='Navbar__icon-burger' onClick={() => setShowSubNavbar(!showSubNavbar)} />
                     </section>
                     <section className='Navbar__body'>
-                        <Menu data={menuData} config={config} />
+                        <Menu data={navbarMenuData} config={config} />
                     </section>
                     <section className='Navbar__foot'>
                         <div className='Navbar__before-login Navbar__before-login--hidden'>
@@ -52,7 +52,7 @@ function Navbar() {
                 </div>
             </nav>
             {showSubNavbar && <SubNavbar />}
-        </>
+        </div>
     );
 }
 

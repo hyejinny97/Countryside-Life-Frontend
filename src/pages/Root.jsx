@@ -2,10 +2,10 @@ import {Navbar, Footer} from '../components/root';
 
 function Root() {
     return (
-        <div>
+        <main className='Root'>
             <Navbar />
             <Footer />
-        </div>
+        </main>
     );
 }
 

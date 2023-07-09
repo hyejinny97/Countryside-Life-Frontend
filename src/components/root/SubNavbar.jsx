@@ -1,7 +1,7 @@
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { Menu } from '@components/ui';
-import { menuData } from '@datas/root';
+import { navbarMenuData } from '@datas/root';
 
 function SubNavbar() {
     const config = {
@@ -28,7 +28,7 @@ function SubNavbar() {
                     </div>
                 </div>
             </div>
-            <Menu data={menuData} config={config} />
+            <Menu data={navbarMenuData} config={config} />
         </section>
     );
 }
