@@ -38,6 +38,7 @@ function Signup() {
         name: 'nickname',
         placeholder: '별명',
         className: 'Signup__nickname',
+        helpText: '다른 유저와 겹치지 않도록 입력해 주세요.',
         invalidTexts: [],
     }
 
@@ -48,9 +49,7 @@ function Signup() {
             <Input {...passwordInputProps}/>
             <Input {...checkPasswordInputProps}/>
             <Input {...nicknameInputProps}/>
-            <Link to='/'>
-                <Button primaryDark>회원가입하기</Button>
-            </Link> 
+            <Button primaryDark>회원가입하기</Button>
             <p className='Signup__goto-login'>
                 이미 회원 가입을 하셨나요? &nbsp;
                 <Link to='/login'>로그인</Link>

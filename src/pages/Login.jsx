@@ -24,9 +24,7 @@ function Login() {
             <h2 className="Login__title">로그인</h2>
             <Input {...usernameInputProps}/>
             <Input {...passwordInputProps}/>
-            <Link to='/'>
-                <Button primaryDark>로그인</Button>
-            </Link>
+            <Button primaryDark>로그인</Button>
             <p className='Login__goto-signup'>
                 아직 회원가입을 하지 않으셨나요? &nbsp;
                 <Link to='/signup'>회원가입</Link>
