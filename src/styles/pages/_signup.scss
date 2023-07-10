@@ -1,6 +1,6 @@
 @import '../abstracts/variables';
 
-.Login {
+.Signup {
     &__title {
         margin-bottom: 2rem;
         text-align: center;
@@ -11,10 +11,18 @@
     }
 
     &__password {
+        margin-bottom: 1rem;
+    }
+
+    &__check-password {
+        margin-bottom: 1rem;
+    }
+
+    &__nickname {
         margin-bottom: 1.5rem;
     }
 
-    &__goto-signup {
+    &__goto-login {
         margin-top: 0.5rem;
         font-size: 0.8rem;
 

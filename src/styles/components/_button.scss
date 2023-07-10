@@ -23,6 +23,7 @@
     width: 100%;
     border-radius: 0.2rem;
     font-weight: 700;
+    cursor: pointer;
 
     @each $color in primary, primary-dark, secondary, secondary-light, secondary-dark, tertiary, danger {
         &.#{$color} {

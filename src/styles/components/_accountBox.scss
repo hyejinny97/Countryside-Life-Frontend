@@ -1,7 +1,8 @@
 @import '../abstracts/variables';
 
 .AccountBox {
-    height: calc(100vh - 10rem);
+    padding: 3rem 0;
+    min-height: calc(100vh - 10rem);
     background-color: $secondary-light;
 
     &__wrap {
