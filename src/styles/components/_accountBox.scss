@@ -1,0 +1,19 @@
+@import '../abstracts/variables';
+
+.AccountBox {
+    height: calc(100vh - 10rem);
+    background-color: $secondary-light;
+
+    &__wrap {
+        padding: 3rem;
+        width: 360px;
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: 0 0 0.5rem $secondary-light;
+
+        // @media screen and (max-width:$sm) {
+        //     padding: 3rem;
+        //     max-width: 360px;
+        // }
+    }
+}

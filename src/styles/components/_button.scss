@@ -1,0 +1,40 @@
+@import '../abstracts/variables';
+
+@function colorVariable($color) {
+    @if $color == primary {
+		@return $primary;
+	} @else if $color == primary-dark {
+		@return $primary-dark;
+    } @else if $color == secondary {
+		@return $secondary;
+	} @else if $color == secondary-light {
+		@return $secondary-light;
+	} @else if $color == secondary-dark {
+		@return $secondary-dark;
+    } @else if $color == tertiary {
+		@return $tertiary;
+	} @else if $color == danger {
+		@return $danger;
+	}
+}
+
+.Button {
+    padding: 0.2rem;
+    width: 100%;
+    border-radius: 0.2rem;
+    font-weight: 700;
+
+    @each $color in primary, primary-dark, secondary, secondary-light, secondary-dark, tertiary, danger {
+        &.#{$color} {
+            border: 1px solid colorVariable($color);
+            background-color: colorVariable($color);
+            color: white;
+        }
+
+        &.#{$color}.outline {
+            border: 1px solid colorVariable($color);
+            background-color: white;
+            color: colorVariable($color);  
+        }
+    }
+}
