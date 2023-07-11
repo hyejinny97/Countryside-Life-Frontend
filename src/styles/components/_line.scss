@@ -1,0 +1,13 @@
+@import '../abstracts/variables';
+@import '../abstracts/functions';
+
+.Line {
+    width: 100%;
+    height: 1px;
+
+    @each $color in primary, primary-dark, secondary, secondary-light, secondary-dark, tertiary, danger {
+        &.#{$color} {
+            background-color: colorVariable($color);
+        }
+    }
+}

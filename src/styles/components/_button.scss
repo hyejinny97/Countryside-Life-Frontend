@@ -1,22 +1,5 @@
 @import '../abstracts/variables';
-
-@function colorVariable($color) {
-    @if $color == primary {
-		@return $primary;
-	} @else if $color == primary-dark {
-		@return $primary-dark;
-    } @else if $color == secondary {
-		@return $secondary;
-	} @else if $color == secondary-light {
-		@return $secondary-light;
-	} @else if $color == secondary-dark {
-		@return $secondary-dark;
-    } @else if $color == tertiary {
-		@return $tertiary;
-	} @else if $color == danger {
-		@return $danger;
-	}
-}
+@import '../abstracts/functions';
 
 .Button {
     padding: 0.2rem;
