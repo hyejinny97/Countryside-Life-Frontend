@@ -6,7 +6,7 @@ function ImageFileInput({ name, label, labelContent, className, ...rest }) {
     
     return (
         <div className={inputClassName}>
-            <label className="ImageFileInput__label" for={label}>
+            <label className="ImageFileInput__label" htmlFor={label}>
                 {labelContent}
             </label>
             <input 

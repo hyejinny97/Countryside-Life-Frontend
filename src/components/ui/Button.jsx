@@ -11,7 +11,8 @@ function Button({
     danger,
     outline,
     className, 
-    children
+    children,
+    ...rest
 }) {
 
     const buttonClassName = classname('Button', {
@@ -26,7 +27,7 @@ function Button({
     }, className)
 
     return (
-        <button className={buttonClassName}>
+        <button className={buttonClassName} {...rest}>
             {children}
         </button>
     );

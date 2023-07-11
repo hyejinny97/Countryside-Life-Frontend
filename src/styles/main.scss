@@ -4,10 +4,12 @@
 @import 'base/common';
 @import 'base/typography';
 
-@import 'components/accountBox';
 @import 'components/input';
-@import 'components/imagefile-input';
 @import 'components/button';
+@import 'components/modal';
+@import 'components/accountBox';
+@import 'components/imagefile-input';
+@import 'components/remove-account-modal';
 
 @import 'layout/navbar';
 @import 'layout/subnavbar';

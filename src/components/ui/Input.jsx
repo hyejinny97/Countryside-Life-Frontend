@@ -20,7 +20,7 @@ function Input({ type, name, label, helpText, invalidTexts, placeholder, left, r
 
     return (
     <div className={`Input ${className}`}>
-        {label && <label className='Input__label' for={label}>{label}</label>}
+        {label && <label className='Input__label' htmlFor={label}>{label}</label>}
         {helpText && <p className='Input__help-text'>{helpText}</p>}
         <div className={inputContainerClassName}>
             <div className='Input__input-left'>{left}</div>

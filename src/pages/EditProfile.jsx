@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { BsCamera } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
-import { AccountBox } from '@components/account';
+import { AccountBox, RemoveAccountModal } from '@components/account';
 import { ImageFileInput, Input, Button } from '@components/ui';
 
 function EditProfile() {
     const [image, setImage] = useState('');
+    const [showModal, setShowModal] = useState(false);
 
     const handleImage = (imageUrl) => {
         setImage(imageUrl)
+    }
+
+    const handleModalClose = () => {
+        setShowModal(false);
     }
 
     const imageInputProps = {
@@ -50,7 +55,8 @@ function EditProfile() {
             <Input {...usernameInputProps}/>
             <Input {...nicknameInputProps}/>
             <Button primaryDark>회원 정보 수정</Button>
-            <p className="EditProfile__remove-account">계정탈퇴</p>
+            <p className="EditProfile__remove-account" onClick={() => setShowModal(!showModal)}>계정탈퇴</p>
+            {showModal && <RemoveAccountModal handleModalClose={handleModalClose} />}
         </AccountBox>
     );
 }
