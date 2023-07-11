@@ -1,0 +1,51 @@
+@import '../abstracts/variables';
+
+.Input {
+    &__label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 600;
+        line-height: 1.5rem;
+    }
+
+    &__help-text {
+        line-height: 1.3rem;
+        font-size: 0.8rem;
+        color: $secondary;
+    }
+
+    &__input-container {
+        display: flex;
+        align-items: center;
+        padding: 0.2rem 0.5rem;
+        width: 100%;
+        border: 1px solid $secondary;
+        border-radius: 0.2rem;
+
+        &--no-line {
+            padding: 0;
+            border: none;
+        }
+    }
+
+    &__input {
+        padding: 0.2rem 0.5rem;
+        width: 100%;
+        border: 1px solid $secondary;
+        border-radius: 0.2rem;
+        outline: none;
+
+        &--red {
+            border-color: $danger;
+        }
+
+        &--no-line {
+            border: none;
+        }
+    }
+
+    &__invalid-text {
+        font-size: 0.8rem;
+        color: $danger;
+    }
+}

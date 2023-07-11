@@ -1,0 +1,27 @@
+.RemoveAccountModal {
+    &__head {
+        margin-bottom: 0.5rem;
+    }
+
+    &__title {
+        font-size: 1.2rem;
+    }
+
+    &__body {
+        margin-bottom: 2rem;
+    }
+
+    &__foot {
+        display: flex;
+        justify-content: end;
+    }
+
+    &__button-close {
+        margin-right: 0.2rem;
+        width: 5rem;
+    }
+
+    &__button-remove {
+        width: 5rem;
+    }
+}

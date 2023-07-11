@@ -7,6 +7,7 @@ import logo from '@assets/logo.png';
 import { SubNavbar } from '@components/root';
 import { Menu } from '@components/ui';
 import { navbarMenuData } from '@datas/root';
+import { PATH_ROOT, PATH_SIGNUP, PATH_LOGIN, PATH_MYPAGE  } from '@constants';
 
 function Navbar() {
     const [showUserInfo, setShowUserInfo] = useState(false);
@@ -24,18 +25,18 @@ function Navbar() {
             <nav className='Navbar container'>
                 <div className='Navbar__wrap container__wrap'>
                     <section className='Navbar__head'>
-                        <Link to='/'><img className='Navbar__logo' src={logo} alt='logo'/></Link>
+                        <Link to={PATH_ROOT}><img className='Navbar__logo' src={logo} alt='logo'/></Link>
                         <RxHamburgerMenu className='Navbar__icon-burger' onClick={() => setShowSubNavbar(!showSubNavbar)} />
                     </section>
                     <section className='Navbar__body'>
                         <Menu data={navbarMenuData} config={config} />
                     </section>
                     <section className='Navbar__foot'>
-                        <div className='Navbar__before-login Navbar__before-login--hidden'>
-                            <Link className="Navbar__utils-link" to='/'>로그인</Link>
-                            <Link className="Navbar__utils-link" to='/'>회원가입</Link>
+                        <div className='Navbar__before-login'>
+                            <Link className="Navbar__utils-link" to={PATH_LOGIN}>로그인</Link>
+                            <Link className="Navbar__utils-link" to={PATH_SIGNUP}>회원가입</Link>
                         </div>
-                        <div className="Navbar__after-login">
+                        <div className="Navbar__after-login Navbar__after-login--hidden">
                             <div className="Navbar__icons" onClick={() => setShowUserInfo(!showUserInfo)}>
                                 <FaUserCircle className="Navbar__icon-user" />
                                 <AiOutlineArrowDown className="Navbar__icon-down" />
@@ -44,7 +45,7 @@ function Navbar() {
                                 <p className="Navbar__user-name">
                                     <span className="Navbar__user-name--bold">농부가될테야</span>님
                                 </p>
-                                <Link className="Navbar__mypage" style={{display: 'block'}} to='/'>마이페이지</Link>
+                                <Link className="Navbar__mypage" style={{display: 'block'}} to={PATH_MYPAGE}>마이페이지</Link>
                                 <Link className="Navbar__logout-link" style={{display: 'block'}} to='/'>로그아웃</Link>
                             </div>
                         </div>

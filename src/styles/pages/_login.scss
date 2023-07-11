@@ -1,0 +1,25 @@
+@import '../abstracts/variables';
+
+.Login {
+    &__title {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    &__username {
+        margin-bottom: 1rem;
+    }
+
+    &__password {
+        margin-bottom: 1.5rem;
+    }
+
+    &__goto-signup {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+
+        & a {
+            text-decoration: underline;
+        }
+    }
+}

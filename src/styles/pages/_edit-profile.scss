@@ -1,0 +1,70 @@
+@import '../abstracts/variables';
+
+.EditProfile {
+    &__title {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    &__image-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    &__image {
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    &__icon-user {
+        font-size: 10rem;
+        color: $secondary;
+    }
+
+    &__image-input {
+        position: absolute;
+        bottom: 2rem;
+        right: 3rem;
+
+        & label {
+            padding: 0.3rem 0.5rem;
+            background-color: white;
+            border: 1px solid $secondary-light;
+            border-radius: 50%;
+            box-shadow: 0.1rem 0.1rem 0.5rem $secondary;
+        }
+    }
+
+    &__username {
+        margin-bottom: 1rem;
+    }
+
+    &__nickname {
+        margin-bottom: 1rem;
+    }
+
+    &__change-password {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        text-decoration: underline;
+
+        & svg {
+            font-size: 1.3rem;
+        }
+    }
+
+    &__remove-account {
+        margin-top: 0.5rem;
+        text-align: center;
+        font-size: 0.8rem;
+        color: $danger;
+        cursor: pointer;
+    }
+}
