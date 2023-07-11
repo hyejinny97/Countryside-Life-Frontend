@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { AccountBox } from '@components/account';
 import { Input, Button } from '@components/ui';
+import { PATH_SIGNUP } from '@constants';
 
 function Login() {
     const usernameInputProps = {
@@ -27,7 +28,7 @@ function Login() {
             <Button primaryDark>로그인</Button>
             <p className='Login__goto-signup'>
                 아직 회원가입을 하지 않으셨나요? &nbsp;
-                <Link to='/signup'>회원가입</Link>
+                <Link to={PATH_SIGNUP}>회원가입</Link>
             </p>
         </AccountBox>
     );

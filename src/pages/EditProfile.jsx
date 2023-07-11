@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { BsCamera } from "react-icons/bs";
 import { FaUserCircle } from "react-icons/fa";
 import { AiFillLock } from "react-icons/ai";
 import { AccountBox, RemoveAccountModal } from '@components/account';
 import { ImageFileInput, Input, Button } from '@components/ui';
-import { Link } from 'react-router-dom';
+import { PATH_CHANGEPASSWORD } from '@constants';
 
 function EditProfile() {
     const [image, setImage] = useState('');
@@ -58,7 +59,7 @@ function EditProfile() {
             <Input {...nicknameInputProps}/>
             <div className="EditProfile__change-password">
                 <AiFillLock />
-                <Link to='/change-password'>비밀번호 변경하기</Link>
+                <Link to={PATH_CHANGEPASSWORD}>비밀번호 변경하기</Link>
             </div>
             <Button primaryDark>회원 정보 수정</Button>
             <p className="EditProfile__remove-account" onClick={() => setShowModal(!showModal)}>계정탈퇴</p>

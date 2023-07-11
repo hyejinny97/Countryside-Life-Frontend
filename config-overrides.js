@@ -8,6 +8,7 @@ module.exports = function override(config) {
     '@styles' : 'src/styles',
     '@datas': 'src/datas',
     '@routers': 'src/routers',
+    '@constants': 'src/constants',
   })(config)
 
   return config

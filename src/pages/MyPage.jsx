@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Button, Line } from '@components/ui';
+import { PATH_EDITPROFILE } from '@constants';
 
 function MyPage() {
     return (
@@ -12,7 +13,7 @@ function MyPage() {
                     <div className="MyPage__user-info">
                         <FaUserCircle className="MyPage__icon-user"/>
                         <p className="MyPage__nickname">농부가될테야</p>
-                        <Link to='/edit-profile'>
+                        <Link to={PATH_EDITPROFILE}>
                             <Button className="MyPage__button-setting" secondary outline>설정</Button>
                         </Link>
                     </div>
