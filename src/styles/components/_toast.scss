@@ -1,0 +1,28 @@
+@import '../abstracts/variables';
+
+.Toast {
+    position: fixed;
+    top: -5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1rem;
+    min-width: 10rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem $secondary;
+    font-size: 0.9rem;
+    color: $secondary-dark;
+    z-index: 5;
+    opacity: 0;
+    transition: all 1s;
+    
+    &--show {
+        top: 1rem;
+        opacity: 1;
+    }
+
+    &--hidden {
+        top: -5rem;
+        opacity: 0;
+    }
+}
