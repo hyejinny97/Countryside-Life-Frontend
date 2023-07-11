@@ -45,7 +45,19 @@
     }
 
     &__nickname {
+        margin-bottom: 1rem;
+    }
+
+    &__change-password {
+        display: flex;
+        align-items: center;
         margin-bottom: 1.5rem;
+        font-weight: 600;
+        text-decoration: underline;
+
+        & svg {
+            font-size: 1.3rem;
+        }
     }
 
     &__remove-account {
