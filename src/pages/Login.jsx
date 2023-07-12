@@ -1,11 +1,9 @@
-import axios from 'axios';
-import Cookies from 'universal-cookie';
 import { Link, Form, redirect, useNavigation, useActionData } from 'react-router-dom';
 import { AccountBox } from '@components/account';
 import { Input, Button, Spinner } from '@components/ui';
 import { PATH_SIGNUP, PATH_ROOT } from '@constants';
-import { loginAxios, getUserInfoAxios } from '@services';
-import { store, setUserInfo } from '@store';
+import { loginAxios } from '@services';
+import { processAccessToken, processRefreshToken } from '@helpers';
 
 async function action({ request }) {
     const data = Object.fromEntries(await request.formData());
@@ -13,16 +11,8 @@ async function action({ request }) {
         const response = await loginAxios(data);
         const { access, refresh } = response.data;
 
-        // access token은 request header에 저장
-        axios.defaults.headers.common['Authorization'] = `Bearer ${access}`;
-        
-        // store에 user 정보 저장
-        const userInfo = await getUserInfoAxios();
-        store.dispatch(setUserInfo(userInfo.data));
-        
-        // refresh token은 cookie에 저장
-        const cookies = new Cookies();
-        cookies.set('refresh_token', refresh);
+        processAccessToken(access);
+        processRefreshToken(refresh);
 
         return redirect(PATH_ROOT);
     } catch (e) {

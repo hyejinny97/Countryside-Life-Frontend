@@ -3,13 +3,15 @@ import {
   } from "react-router-dom";
 import { 
   Root, Login, Signup, EditProfile, ChangePassword, MyPage,
-  signupAction, loginAction
+  signupAction, loginAction,
+  rootLoader
 } from '@pages';
 import { PATH_ROOT, PATH_LOGIN, PATH_SIGNUP, PATH_EDITPROFILE, PATH_CHANGEPASSWORD, PATH_MYPAGE } from '@constants';
 
 const router = createBrowserRouter([
   {
     path: PATH_ROOT,
+    loader: rootLoader,
     element: <Root />,
     children: [
       {

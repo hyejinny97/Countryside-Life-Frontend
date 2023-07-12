@@ -25,4 +25,12 @@ const loginAxios = async (data) => {
     });
 }
 
-export {signupAxios, loginAxios, getUserInfoAxios};
+const refreshTokenAxios = async (refreshToken) => {
+    return await axios({
+        method: 'post',
+        url: baseURL + '/accounts/token/refresh/',
+        data: {'refresh': refreshToken},
+    });
+}
+
+export {signupAxios, loginAxios, getUserInfoAxios, refreshTokenAxios};
