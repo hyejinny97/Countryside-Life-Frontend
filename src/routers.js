@@ -1,7 +1,10 @@
 import {
     createBrowserRouter,
   } from "react-router-dom";
-import { Root, Login, Signup, EditProfile, ChangePassword, MyPage } from '@pages';
+import { 
+  Root, Login, Signup, EditProfile, ChangePassword, MyPage,
+  signupAction
+} from '@pages';
 import { PATH_ROOT, PATH_LOGIN, PATH_SIGNUP, PATH_EDITPROFILE, PATH_CHANGEPASSWORD, PATH_MYPAGE } from '@constants';
 
 const router = createBrowserRouter([
@@ -15,6 +18,7 @@ const router = createBrowserRouter([
       },
       {
         path: PATH_SIGNUP,
+        action: signupAction,
         element: <Signup />,
       },
       {

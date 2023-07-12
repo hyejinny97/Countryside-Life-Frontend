@@ -1,0 +1,23 @@
+@import '../abstracts/variables';
+
+.Spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    & svg {
+        font-size: 5rem;
+        color: $primary-dark;
+        animation: rotation 2s linear infinite;
+
+        @keyframes rotation {
+            from {transform: rotate(0deg);}
+            to {transform: rotate(360deg);}
+        }
+    }
+}

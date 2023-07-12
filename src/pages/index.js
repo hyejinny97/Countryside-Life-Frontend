@@ -4,3 +4,5 @@ export { default as Signup } from './Signup';
 export { default as EditProfile } from './EditProfile';
 export { default as ChangePassword } from './ChangePassword';
 export { default as MyPage } from './MyPage';
+
+export { action as signupAction } from './Signup';
