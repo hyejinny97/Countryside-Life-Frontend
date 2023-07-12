@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import { refreshTokenAxios, getUserInfoAxios } from '@services';
+import { refreshTokenAxios, getUserInfoAxios, logoutAxios } from '@services';
 import { store, setUserInfo } from '@store';
 import { JWT_EXPIRRY_TIME } from '@constants';
 
@@ -27,10 +27,27 @@ const silentRefresh = async () => {
     const refreshToken = cookies.get('refresh_token');
 
     if (refreshToken) {
-        const response = await refreshTokenAxios(refreshToken);
-        const { access } = response.data;
-        processAccessToken(access);
+        try {
+            const response = await refreshTokenAxios(refreshToken);
+            const { access } = response.data;
+            processAccessToken(access);
+        } catch (e) {
+            console.log(e.response.data);
+        }
     }
 }
 
-export {processAccessToken, processRefreshToken, silentRefresh};
+const blacklistRefresh = async () => {
+    const cookies = new Cookies();
+    const refreshToken = cookies.get('refresh_token');
+
+    if (refreshToken) {
+        try {
+            await logoutAxios(refreshToken);
+        } catch (e) {
+            console.log(e.response.data);
+        }
+    }
+}
+
+export {processAccessToken, processRefreshToken, silentRefresh, blacklistRefresh};

@@ -33,4 +33,12 @@ const refreshTokenAxios = async (refreshToken) => {
     });
 }
 
-export {signupAxios, loginAxios, getUserInfoAxios, refreshTokenAxios};
+const logoutAxios = async (refreshToken) => {
+    return await axios({
+        method: 'post',
+        url: baseURL + '/accounts/logout/',
+        data: {'refresh': refreshToken},
+    });
+}
+
+export {signupAxios, loginAxios, logoutAxios, getUserInfoAxios, refreshTokenAxios};

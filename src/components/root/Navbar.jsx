@@ -8,7 +8,7 @@ import logo from '@assets/logo.png';
 import { SubNavbar } from '@components/root';
 import { Menu } from '@components/ui';
 import { navbarMenuData } from '@datas/root';
-import { PATH_ROOT, PATH_SIGNUP, PATH_LOGIN, PATH_MYPAGE  } from '@constants';
+import { PATH_ROOT, PATH_SIGNUP, PATH_LOGIN, PATH_LOGOUT, PATH_MYPAGE  } from '@constants';
 
 function Navbar() {
     const [showUserInfo, setShowUserInfo] = useState(false);
@@ -55,7 +55,7 @@ function Navbar() {
                                         <span className="Navbar__user-name--bold">{nickname}</span>님
                                     </p>
                                     <Link className="Navbar__mypage" style={{display: 'block'}} to={PATH_MYPAGE}>마이페이지</Link>
-                                    <Link className="Navbar__logout-link" style={{display: 'block'}} to='/'>로그아웃</Link>
+                                    <Link className="Navbar__logout-link" style={{display: 'block'}} to={PATH_LOGOUT}>로그아웃</Link>
                                 </div>
                             </div>
                         }

@@ -1,1 +1,1 @@
-export {processAccessToken, processRefreshToken, silentRefresh} from '@helpers/jwt';
+export {processAccessToken, processRefreshToken, silentRefresh, blacklistRefresh} from '@helpers/jwt';

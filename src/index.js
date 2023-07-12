@@ -8,8 +8,12 @@ import {
 } from "react-router-dom";
 import '@styles/main.scss';
 import { router } from '@routers';
+import { silentRefresh } from '@helpers'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+silentRefresh();
+
 root.render(
   <Provider store={store}>
     <React.StrictMode>

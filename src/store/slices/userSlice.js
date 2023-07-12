@@ -14,7 +14,12 @@ const userSlice = createSlice({
             state.id = action.payload.id;
             state.nickname = action.payload.nickname;
             state.profileImage = action.payload.profileImage || '';
-        }
+        },
+        resetUserInfo(state, action) {
+            state.id = '';
+            state.nickname = '';
+            state.profileImage = '';
+        },
     },
     extraReducers(builder) {
 
@@ -22,4 +27,4 @@ const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
-export const { setUserInfo } = userSlice.actions;
+export const { setUserInfo, resetUserInfo } = userSlice.actions;
