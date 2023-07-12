@@ -6,3 +6,4 @@ export { default as ChangePassword } from './ChangePassword';
 export { default as MyPage } from './MyPage';
 
 export { action as signupAction } from './Signup';
+export { action as loginAction } from './Login';

@@ -10,4 +10,19 @@ const signupAxios = async (data) => {
     });
 }
 
-export {signupAxios};
+const getUserInfoAxios = async () => {
+    return await axios({
+        method: 'get',
+        url: baseURL + '/accounts/user/',
+    });
+}
+
+const loginAxios = async (data) => {
+    return await axios({
+        method: 'post',
+        url: baseURL + '/accounts/login/',
+        data: data,
+    });
+}
+
+export {signupAxios, loginAxios, getUserInfoAxios};

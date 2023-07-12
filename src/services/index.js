@@ -1,1 +1,5 @@
-export { signupAxios } from './account';
+export { 
+    signupAxios, 
+    getUserInfoAxios,
+    loginAxios 
+} from './account';
