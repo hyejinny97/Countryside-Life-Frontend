@@ -1,18 +1,44 @@
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useSelector, shallowEqual } from 'react-redux';
+import { Link, redirect } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Button, Line } from '@components/ui';
-import { PATH_EDITPROFILE } from '@constants';
+import { PATH_EDITPROFILE, PATH_LOGIN } from '@constants';
+import { silentRefresh } from '@helpers';
+
+async function loader () {
+    if (axios.defaults.headers.common.Authorization) {
+        return null;
+    };
+    
+    try {
+        await silentRefresh();
+        return null;
+    } catch(e) {
+        return redirect(PATH_LOGIN);
+    }
+}
 
 function MyPage() {
+    const {nickname, profileImage} = useSelector(({ user: {nickname, profileImage} }) => {
+        return {
+            nickname,
+            profileImage
+        }
+    }, shallowEqual);
+
     return (
         <div className="MyPage container">
             <div className="MyPage__wrap container__wrap">
                 <div className="MyPage__profile-card">
                     <div className="MyPage__user-info">
-                        <FaUserCircle className="MyPage__icon-user"/>
-                        <p className="MyPage__nickname">농부가될테야</p>
+                        {profileImage ? 
+                            <img className="MyPage__image" src={profileImage} alt='profile' /> :
+                            <FaUserCircle className="MyPage__icon-user"/>
+                        }
+                        <p className="MyPage__nickname">{nickname}</p>
                         <Link to={PATH_EDITPROFILE}>
                             <Button className="MyPage__button-setting" secondary outline>설정</Button>
                         </Link>
@@ -40,3 +66,4 @@ function MyPage() {
 }
 
 export default MyPage;
+export {loader};

@@ -8,4 +8,4 @@ const store = configureStore({
 });
 
 export { store };
-export { setUserInfo, resetUserInfo } from './slices/userSlice';
+export { setUserInfo, resetUserInfo, updateUserInfo } from './slices/userSlice';

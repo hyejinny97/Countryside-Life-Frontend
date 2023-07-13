@@ -4,7 +4,7 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         id: -1,
-        // username: '',
+        username: '',
         nickname: '',
         profileImage: '',
         // accessToken: '',
@@ -12,13 +12,21 @@ const userSlice = createSlice({
     reducers: {
         setUserInfo(state, action) {
             state.id = action.payload.id;
+            state.username = action.payload.username;
             state.nickname = action.payload.nickname;
-            state.profileImage = action.payload.profileImage || '';
+            state.profileImage = action.payload.image || '';
         },
         resetUserInfo(state, action) {
-            state.id = '';
+            state.id = -1;
+            state.username = '';
             state.nickname = '';
             state.profileImage = '';
+        },
+        updateUserInfo(state, action) {
+            state.id = action.payload.id;
+            state.username = action.payload.username;
+            state.nickname = action.payload.nickname;
+            state.profileImage = action.payload.image || '';
         },
     },
     extraReducers(builder) {
@@ -27,4 +35,4 @@ const userSlice = createSlice({
 });
 
 export const userReducer = userSlice.reducer;
-export const { setUserInfo, resetUserInfo } = userSlice.actions;
+export const { setUserInfo, resetUserInfo, updateUserInfo } = userSlice.actions;

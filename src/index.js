@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
@@ -8,11 +9,10 @@ import {
 } from "react-router-dom";
 import '@styles/main.scss';
 import { router } from '@routers';
-import { silentRefresh } from '@helpers'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-silentRefresh();
+axios.defaults.withCredentials = true;
 
 root.render(
   <Provider store={store}>

@@ -26,14 +26,16 @@ const silentRefresh = async () => {
     const cookies = new Cookies();
     const refreshToken = cookies.get('refresh_token');
 
-    if (refreshToken) {
-        try {
-            const response = await refreshTokenAxios(refreshToken);
-            const { access } = response.data;
-            processAccessToken(access);
-        } catch (e) {
-            console.log(e.response.data);
-        }
+    if (!refreshToken) {
+        throw Error('refresh token 없음')
+    };
+
+    try {
+        const response = await refreshTokenAxios(refreshToken);
+        const { access } = response.data;
+        await processAccessToken(access);
+    } catch (e) {
+        throw e;
     }
 }
 

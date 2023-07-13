@@ -1,11 +1,13 @@
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 import {
     createBrowserRouter,
     redirect
   } from "react-router-dom";
 import { 
   Root, Login, Signup, EditProfile, ChangePassword, MyPage,
-  signupAction, loginAction,
+  signupAction, editProfileAction, loginAction,
+  rootLoader, requireAuthLoader
 } from '@pages';
 import { 
   PATH_ROOT, 
@@ -22,6 +24,7 @@ import { resetUserInfo, store } from '@store';
 const router = createBrowserRouter([
   {
     path: PATH_ROOT,
+    loader: rootLoader,
     element: <Root />,
     children: [
       {
@@ -35,6 +38,8 @@ const router = createBrowserRouter([
           blacklistRefresh();
           axios.defaults.headers.common['Authorization'] = '';
           store.dispatch(resetUserInfo());
+          const cookies = new Cookies();
+          cookies.remove('refresh_token')
           return redirect(PATH_ROOT);
         },
       },
@@ -45,6 +50,8 @@ const router = createBrowserRouter([
       },
       {
         path: PATH_EDITPROFILE,
+        loader: requireAuthLoader,
+        action: editProfileAction,
         element: <EditProfile />,
       },
       {
@@ -53,6 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: PATH_MYPAGE,
+        loader: requireAuthLoader,
         element: <MyPage />,
       },
     ]

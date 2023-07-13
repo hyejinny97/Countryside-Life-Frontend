@@ -17,6 +17,15 @@ const getUserInfoAxios = async () => {
     });
 }
 
+const updateUserInfoAxios = async (data) => {
+    return await axios({
+        method: 'put',
+        url: baseURL + '/accounts/user/',
+        headers: {"Content-Type": "multipart/form-data"},
+        data: data,
+    });
+}
+
 const loginAxios = async (data) => {
     return await axios({
         method: 'post',
@@ -41,4 +50,10 @@ const logoutAxios = async (refreshToken) => {
     });
 }
 
-export {signupAxios, loginAxios, logoutAxios, getUserInfoAxios, refreshTokenAxios};
+export {
+    signupAxios, 
+    getUserInfoAxios, 
+    updateUserInfoAxios,
+    loginAxios, 
+    logoutAxios, 
+    refreshTokenAxios};
