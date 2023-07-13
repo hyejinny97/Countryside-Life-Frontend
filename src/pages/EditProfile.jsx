@@ -8,7 +8,7 @@ import { AccountBox, RemoveAccountModal } from '@components/account';
 import { ImageFileInput, Input, Button } from '@components/ui';
 import { PATH_CHANGEPASSWORD, PATH_MYPAGE, PATH_LOGOUT } from '@constants';
 import { updateUserInfoAxios, deleteUserInfoAxios } from '@services';
-import { store, updateUserInfo } from '@store';
+import { store, updateUserInfo, runToast } from '@store';
 
 async function action ({ request }) {
     if (request.method === 'PUT') {
@@ -19,7 +19,8 @@ async function action ({ request }) {
         try {
             const response = await updateUserInfoAxios(data);
             store.dispatch(updateUserInfo(response.data));
-            alert('회원 정보가 성공적으로 수정되었습니다.');
+            // alert('회원 정보가 성공적으로 수정되었습니다.');
+            store.dispatch(runToast('회원 정보가 성공적으로 수정되었습니다.'));
             return redirect(PATH_MYPAGE);
         } catch(e) {
             return e.response.data;
@@ -27,10 +28,12 @@ async function action ({ request }) {
     } else if (request.method === 'DELETE') {
         try {
             await deleteUserInfoAxios();
-            alert('계정이 성공적으로 삭제되었습니다.');
+            // alert('계정이 성공적으로 삭제되었습니다.');
+            store.dispatch(runToast('계정이 성공적으로 삭제되었습니다.'));
             return redirect(PATH_LOGOUT);
         } catch(e) {
-            alert('계정을 삭제하는데 실패하였습니다.');
+            // alert('계정을 삭제하는데 실패하였습니다.');
+            store.dispatch(runToast('계정을 삭제하는데 실패하였습니다.'));
             return null;
         }
     }

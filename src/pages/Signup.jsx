@@ -3,12 +3,14 @@ import { AccountBox } from '@components/account';
 import { Input, Button, Spinner } from '@components/ui';
 import { PATH_LOGIN } from '@constants';
 import { signupAxios } from '@services';
+import { store, runToast } from '@store';
 
 async function action({ request }) {
     const data = Object.fromEntries(await request.formData());
     try {
         await signupAxios(data);
-        alert('성공적으로 회원 가입되었습니다.');
+        // alert('성공적으로 회원 가입되었습니다.');
+        store.dispatch(runToast('성공적으로 회원 가입되었습니다.'));
         return redirect(PATH_LOGIN);
     } catch (e) {
         return e.response.data;

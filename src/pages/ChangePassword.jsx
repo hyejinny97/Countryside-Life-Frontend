@@ -3,13 +3,15 @@ import { AccountBox } from '@components/account';
 import { Input, Button } from '@components/ui';
 import { changePasswordAxios } from '@services';
 import { PATH_MYPAGE } from '@constants';
+import { store, runToast } from '@store';
 
 async function action({ request }) {
     const data = Object.fromEntries(await request.formData());
 
     try {
         await changePasswordAxios(data);
-        alert('비밀번호가 성공적으로 변경되었습니다.');
+        // alert('비밀번호가 성공적으로 변경되었습니다.');
+        store.dispatch(runToast('비밀번호가 성공적으로 변경되었습니다.'));
         return redirect(PATH_MYPAGE);
     } catch(e) {
         return e.response.data;
