@@ -93,6 +93,14 @@
         cursor: pointer;
     }
 
+    &__image {
+        margin-right: 0.1rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
     &__icon-user {
         margin-right: 0.1rem;
         font-size: 2.5rem;

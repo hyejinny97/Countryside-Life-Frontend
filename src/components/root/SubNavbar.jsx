@@ -30,7 +30,10 @@ function SubNavbar() {
                     </div>
                     :
                     <div className='SubNavbar__after-login'>
-                        <FaUserCircle className="SubNavbar__icon-user" />
+                        {profileImage ? 
+                            <img className="SubNavbar__image" src={profileImage} alt='profile' /> :
+                            <FaUserCircle className="SubNavbar__icon-user" />
+                        }
                         <p className="SubNavbar__user-name"> 
                             <Link to={PATH_MYPAGE}><span className="SubNavbar__user-name--bold">{nickname}</span></Link>님
                         </p>

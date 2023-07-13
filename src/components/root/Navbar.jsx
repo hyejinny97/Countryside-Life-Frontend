@@ -53,7 +53,10 @@ function Navbar() {
                             :
                             <div className="Navbar__after-login">
                                 <div className="Navbar__icons" onClick={() => setShowUserInfo(!showUserInfo)}>
-                                    <FaUserCircle className="Navbar__icon-user" />
+                                    {profileImage ? 
+                                        <img className="Navbar__image" src={profileImage} alt='profile' /> :
+                                        <FaUserCircle className="Navbar__icon-user" />
+                                    }
                                     <AiOutlineArrowDown className="Navbar__icon-down" />
                                 </div>
                                 <div className={`Navbar__user-info ${!showUserInfo && 'Navbar__user-info--hidden'}`}>
