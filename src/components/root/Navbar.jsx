@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaUserCircle } from "react-icons/fa";
 import { AiOutlineArrowDown } from "react-icons/ai";
@@ -19,7 +19,13 @@ function Navbar() {
             profileImage
         }
     }, shallowEqual)
- 
+    const location = useLocation();
+
+    useEffect(() => {
+        setShowUserInfo(false);
+        setShowSubNavbar(false);
+    }, [location]);
+
     const config = {
         render(item) {
             return <Link to={item.to}>{item.label}</Link>;
