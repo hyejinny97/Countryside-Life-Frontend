@@ -4,9 +4,11 @@ function Toast({ children }) {
     const toast = useRef();
 
     useEffect(() => {
+        toast.current.classList.remove('Toast--hidden');
         toast.current.classList.add('Toast--show');
 
         setTimeout(() => {
+            toast.current.classList.remove('Toast--show');
             toast.current.classList.add('Toast--hidden');
         }, 3000)
     })

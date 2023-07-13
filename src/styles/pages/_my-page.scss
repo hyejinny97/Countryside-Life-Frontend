@@ -38,6 +38,19 @@
         padding: 1rem;
     }
 
+    &__image {
+        margin-bottom: 0.5rem;
+        width: 8rem;
+        height: 8rem;
+        object-fit: cover;
+        border-radius: 50%;
+
+        @media screen and (max-width: $md) {
+            width: 7rem;
+            height: 7rem;
+        }
+    }
+
     &__icon-user {
         margin-bottom: 0.5rem;
         font-size: 8rem;

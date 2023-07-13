@@ -9,6 +9,9 @@ module.exports = function override(config) {
     '@datas': 'src/datas',
     '@routers': 'src/routers',
     '@constants': 'src/constants',
+    '@store': 'src/store',
+    '@services': 'src/services',
+    '@helpers': 'src/helpers',
   })(config)
 
   return config
