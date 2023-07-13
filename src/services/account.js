@@ -34,6 +34,13 @@ const changePasswordAxios = async (data) => {
     });
 }
 
+const deleteUserInfoAxios = async () => {
+    return await axios({
+        method: 'delete',
+        url: baseURL + '/accounts/user/',
+    });
+}
+
 const loginAxios = async (data) => {
     return await axios({
         method: 'post',
@@ -63,6 +70,7 @@ export {
     getUserInfoAxios, 
     updateUserInfoAxios,
     changePasswordAxios,
+    deleteUserInfoAxios,
     loginAxios, 
     logoutAxios, 
     refreshTokenAxios};

@@ -6,22 +6,33 @@ import { FaUserCircle } from "react-icons/fa";
 import { AiFillLock } from "react-icons/ai";
 import { AccountBox, RemoveAccountModal } from '@components/account';
 import { ImageFileInput, Input, Button } from '@components/ui';
-import { PATH_CHANGEPASSWORD, PATH_MYPAGE } from '@constants';
-import { updateUserInfoAxios } from '@services';
+import { PATH_CHANGEPASSWORD, PATH_MYPAGE, PATH_LOGOUT } from '@constants';
+import { updateUserInfoAxios, deleteUserInfoAxios } from '@services';
 import { store, updateUserInfo } from '@store';
 
 async function action ({ request }) {
-    const data = Object.fromEntries(await request.formData());
-
-    if (!data.image.name) delete data.image;
-
-    try {
-        const response = await updateUserInfoAxios(data);
-        store.dispatch(updateUserInfo(response.data));
-        alert('회원 정보가 성공적으로 수정되었습니다.');
-        return redirect(PATH_MYPAGE);
-    } catch(e) {
-        return e.response.data;
+    if (request.method === 'PUT') {
+        const data = Object.fromEntries(await request.formData());
+    
+        if (!data.image.name) delete data.image;
+    
+        try {
+            const response = await updateUserInfoAxios(data);
+            store.dispatch(updateUserInfo(response.data));
+            alert('회원 정보가 성공적으로 수정되었습니다.');
+            return redirect(PATH_MYPAGE);
+        } catch(e) {
+            return e.response.data;
+        }
+    } else if (request.method === 'DELETE') {
+        try {
+            await deleteUserInfoAxios();
+            alert('계정이 성공적으로 삭제되었습니다.');
+            return redirect(PATH_LOGOUT);
+        } catch(e) {
+            alert('계정을 삭제하는데 실패하였습니다.');
+            return null;
+        }
     }
 }
 
@@ -93,7 +104,11 @@ function EditProfile() {
                 <Button primaryDark>회원 정보 수정</Button>
             </Form>
             <p className="EditProfile__remove-account" onClick={() => setShowModal(!showModal)}>계정탈퇴</p>
-            {showModal && <RemoveAccountModal handleModalClose={handleModalClose} />}
+            {showModal && 
+                <Form method='delete'>
+                    <RemoveAccountModal handleModalClose={handleModalClose} />
+                </Form>
+            }
         </AccountBox>
     );
 }

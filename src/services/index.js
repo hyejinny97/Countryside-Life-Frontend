@@ -3,6 +3,7 @@ export {
     getUserInfoAxios,
     updateUserInfoAxios,
     changePasswordAxios,
+    deleteUserInfoAxios,
     loginAxios,
     logoutAxios,
     refreshTokenAxios
