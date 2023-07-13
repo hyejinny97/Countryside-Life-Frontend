@@ -6,7 +6,7 @@ import {
   } from "react-router-dom";
 import { 
   Root, Login, Signup, EditProfile, ChangePassword, MyPage,
-  signupAction, editProfileAction, loginAction,
+  signupAction, editProfileAction, changePasswordAction, loginAction,
   rootLoader, requireAuthLoader
 } from '@pages';
 import { 
@@ -56,6 +56,8 @@ const router = createBrowserRouter([
       },
       {
         path: PATH_CHANGEPASSWORD,
+        loader: requireAuthLoader,
+        action: changePasswordAction,
         element: <ChangePassword />,
       },
       {

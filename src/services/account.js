@@ -26,6 +26,14 @@ const updateUserInfoAxios = async (data) => {
     });
 }
 
+const changePasswordAxios = async (data) => {
+    return await axios({
+        method: 'PUT',
+        url: baseURL + '/accounts/change_password/',
+        data: data,
+    });
+}
+
 const loginAxios = async (data) => {
     return await axios({
         method: 'post',
@@ -54,6 +62,7 @@ export {
     signupAxios, 
     getUserInfoAxios, 
     updateUserInfoAxios,
+    changePasswordAxios,
     loginAxios, 
     logoutAxios, 
     refreshTokenAxios};
