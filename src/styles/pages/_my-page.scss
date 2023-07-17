@@ -1,19 +1,15 @@
 @import '../abstracts/variables';
 
 .MyPage {
-    &__wrap {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        column-gap: 5vw;
-        justify-items: center;
-        align-items: start;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 5vw;
+    justify-items: center;
+    align-items: start;
 
-        @media screen and (max-width: $sm) {
-            grid-template-columns: 1fr;
-            row-gap: 3rem;
-        }
+    @media screen and (max-width: $sm) {
+        grid-template-columns: 1fr;
+        row-gap: 3rem;
     }
 
     &__profile-card {

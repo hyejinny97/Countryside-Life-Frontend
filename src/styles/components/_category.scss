@@ -1,0 +1,34 @@
+.Category {
+    margin-right: 5vw;
+    width: 300px;
+    border: 1px solid red;
+
+    &__title {
+        margin-bottom: 1rem;
+        word-spacing: -2px;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem 1rem;
+        font-weight: 700;
+
+        & img {
+            margin-right: 0.5rem;
+            width: 1.2rem;
+            height: 1.2rem;
+        }
+
+        &--active {
+            border-radius: 0.5rem;
+            background-color: $primary-dark;
+            color: white;
+
+            &:visited {
+                color: white;
+            }
+        }
+    }
+}
