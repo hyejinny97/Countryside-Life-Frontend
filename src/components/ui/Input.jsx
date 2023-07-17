@@ -1,9 +1,13 @@
-import {useState} from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classname from 'classnames';
 
-function Input({ type, name, label, initialValue, helpText, invalidTexts, placeholder, left, right, className }) {    
+function Input({ type, name, label, initialValue, helpText, invalidTexts, placeholder, left, right, className, clear }) {    
     const [value, setValue] = useState(initialValue || '');
+    
+    useEffect(() => {
+        if (clear) setValue('');
+    }, [clear])
 
     const inputClassName = classname('Input__input', {
         'Input__input--red': invalidTexts && invalidTexts.length >= 1 && (!left || !right),
