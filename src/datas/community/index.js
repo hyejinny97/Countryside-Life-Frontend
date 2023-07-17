@@ -1,0 +1,1 @@
+export {data as categoryMenuData} from './categoryMenu';

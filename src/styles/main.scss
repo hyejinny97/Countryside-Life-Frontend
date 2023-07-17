@@ -11,9 +11,11 @@
 @import 'components/toast';
 @import 'components/line';
 @import 'components/spinner';
+@import 'components/page';
 @import 'components/accountBox';
 @import 'components/imagefile-input';
 @import 'components/remove-account-modal';
+@import 'components/category';
 
 @import 'layout/navbar';
 @import 'layout/subnavbar';
@@ -25,3 +27,4 @@
 @import 'pages/edit-profile';
 @import 'pages/change-password';
 @import 'pages/my-page';
+@import 'pages/community';

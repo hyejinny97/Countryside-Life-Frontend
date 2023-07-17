@@ -5,9 +5,9 @@ import {
     redirect
   } from "react-router-dom";
 import { 
-  Root, Login, Signup, EditProfile, ChangePassword, MyPage,
+  Root, Login, Signup, EditProfile, ChangePassword, MyPage, Community,
   signupAction, editProfileAction, changePasswordAction, loginAction,
-  rootLoader, requireAuthLoader
+  rootLoader, requireAuthLoader, communityLoader,
 } from '@pages';
 import { 
   PATH_ROOT, 
@@ -16,7 +16,8 @@ import {
   PATH_SIGNUP, 
   PATH_EDITPROFILE, 
   PATH_CHANGEPASSWORD, 
-  PATH_MYPAGE 
+  PATH_MYPAGE,
+  PATH_COMMUNITY,
 } from '@constants';
 import { blacklistRefresh } from '@helpers';
 import { resetUserInfo, store } from '@store';
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
     loader: rootLoader,
     element: <Root />,
     children: [
+      {
+        index: true,
+        loader: () => redirect(PATH_COMMUNITY),
+      },
       {
         path: PATH_LOGIN,
         action: loginAction,
@@ -64,6 +69,11 @@ const router = createBrowserRouter([
         path: PATH_MYPAGE,
         loader: requireAuthLoader,
         element: <MyPage />,
+      },
+      {
+        path: PATH_COMMUNITY,
+        loader: communityLoader,
+        element: <Community />,
       },
     ]
   },
