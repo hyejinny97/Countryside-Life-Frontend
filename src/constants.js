@@ -33,6 +33,7 @@ const REGION_ALL = '전체';
 const REGION_GANGWON = '강원도';
 const REGION_GYEONGGI = '경기도';
 const REGION_GYEONGNAM = '경상남도';
+const REGION_GYEONGBUK = '경상북도';
 const REGION_GWANGJU = '광주광역시';
 const REGION_DAEGU = '대구광역시';
 const REGION_DAEJEON = '대전광역시';
@@ -74,6 +75,7 @@ export {
     REGION_GANGWON,
     REGION_GYEONGGI,
     REGION_GYEONGNAM,
+    REGION_GYEONGBUK,
     REGION_GWANGJU,
     REGION_DAEGU,
     REGION_DAEJEON,

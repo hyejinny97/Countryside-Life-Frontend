@@ -1,0 +1,43 @@
+import { 
+    REGION_ALL,
+    REGION_GANGWON,
+    REGION_GYEONGGI,
+    REGION_GYEONGNAM,
+    REGION_GYEONGBUK,
+    REGION_GWANGJU,
+    REGION_DAEGU,
+    REGION_DAEJEON,
+    REGION_BUSAN,
+    REGION_SEOUL,
+    REGION_SEJONG,
+    REGION_ULSAN,
+    REGION_INCHEON,
+    REGION_JEONNAM,
+    REGION_JEONBUK,
+    REGION_JEJU,
+    REGION_CHUNGNAM, 
+    REGION_CHUNGBUK,
+} from '@constants';
+
+const data = [
+    {label: '전체', value: REGION_ALL},
+    {label: '강원', value: REGION_GANGWON},
+    {label: '경기', value: REGION_GYEONGGI},
+    {label: '경남', value: REGION_GYEONGNAM},
+    {label: '경북', value: REGION_GYEONGBUK},
+    {label: '광주', value: REGION_GWANGJU},
+    {label: '대구', value: REGION_DAEGU},
+    {label: '대전', value: REGION_DAEJEON},
+    {label: '부산', value: REGION_BUSAN},
+    {label: '서울', value: REGION_SEOUL},
+    {label: '세종', value: REGION_SEJONG},
+    {label: '울산', value: REGION_ULSAN},
+    {label: '인천', value: REGION_INCHEON},
+    {label: '전남', value: REGION_JEONNAM},
+    {label: '전북', value: REGION_JEONBUK},
+    {label: '제주', value: REGION_JEJU},
+    {label: '충남', value: REGION_CHUNGNAM},
+    {label: '충북', value: REGION_CHUNGBUK},
+];
+
+export {data};

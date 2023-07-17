@@ -23,7 +23,6 @@ function Category() {
 
     return (
         <div className='Category'>
-            <h3 className='Category__title'>시골생활을 공유해보세요</h3>
             <Menu data={categoryMenuData} config={config} />
         </div>
     );

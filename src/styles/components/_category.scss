@@ -1,11 +1,11 @@
 .Category {
+    position: sticky;
     margin-right: 5vw;
-    width: 300px;
-    border: 1px solid red;
+    min-width: 180px;
+    // border: 1px solid red;
 
-    &__title {
-        margin-bottom: 1rem;
-        word-spacing: -2px;
+    @media screen and (max-width:$md) {
+        min-width: 160px;
     }
 
     &__link {

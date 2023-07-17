@@ -1,0 +1,38 @@
+.Dropdown {
+    position: relative;
+    cursor: pointer;
+
+    &__head {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0.1rem 1rem;
+        border: 1px solid $secondary-light;
+        border-radius: 0.1rem;
+        
+        & svg {
+            margin-left: 0.5rem;
+            color: $secondary;
+        }
+    }
+
+    &__body {
+        position: absolute;
+        top: 100%;
+        left: 0%;
+        width: 100%;
+        max-height: calc(30px * 5);
+        overflow-y: scroll;
+        border: 1px solid $secondary-light;
+        border-top: none;
+    }
+
+    &__option {
+        padding: 0.2rem 1rem;
+        height: 30px;
+
+        &:hover {
+            background-color: $secondary-light;
+        }
+    }
+}

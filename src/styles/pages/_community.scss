@@ -1,12 +1,54 @@
 .Community {
-    display: flex;
-    
-    @media screen and (max-width: $md) {
+    &__title {
+        margin-bottom: 1rem;
+        word-spacing: -2px;
+    }
+
+    &__inner {
+        display: flex;
     }
 
     &__content {
+        margin: 0 auto;
         width: 100%;
+        max-width: 600px;
         height: 500px;
-        border: 1px solid blue;
+        // border: 1px solid blue;
+    }
+
+    &__search {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    &__search-input {
+        width: 100%;
+    }
+
+    &__search-button {
+        margin-left: 1rem;
+        width: 5rem;       
+    }
+
+    &__utils {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__write-button {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 3vw;
+        padding: 1rem 1.2rem;
+        border-radius: 50%;
+        background-color: $primary-dark;
+        box-shadow: 0.3rem 0.3rem 0.3rem 0.3rem $secondary-light;
+
+        & svg {
+            font-size: 1.2rem;
+            color: white;
+        }
     }
 }
