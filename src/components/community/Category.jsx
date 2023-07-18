@@ -7,11 +7,11 @@ function Category() {
     const [searchParams] = useSearchParams();
     const currentCategory = searchParams.get('category') || CATEGORY_ALL
 
-    const config = {
+    const configVertical = {
         render: (data) => {
             return (
                 <Link 
-                    className={`Category__link ${currentCategory === data.value ? 'Category__link--active': ''}`}
+                    className={`Category__link Category__link--vertical ${currentCategory === data.value ? 'Category__link--active': ''}`}
                     to={data.to}
                 >
                     <img src={data.icon} alt={`${data.label} 아이콘`} />
@@ -21,9 +21,27 @@ function Category() {
         }
     };
 
+    const configHorizontal = {
+        render: (data) => {
+            return (
+                <div className='Category__link-wrap'>
+                    <Link 
+                        className={`Category__link Category__link--horizontal ${currentCategory === data.value ? 'Category__link--active': ''}`}
+                        to={data.to}
+                        >
+                        <img src={data.icon} alt={`${data.label} 아이콘`} />
+                    </Link>
+                    {data.label}
+                </div>
+            );
+        },
+        // horizontal: true,
+    };
+
     return (
         <div className='Category'>
-            <Menu data={categoryMenuData} config={config} />
+            <Menu className='Category__menu Category__menu--vertical' data={categoryMenuData} config={configVertical} />
+            <Menu className='Category__menu Category__menu--horizontal' data={categoryMenuData} config={configHorizontal} />
         </div>
     );
 }

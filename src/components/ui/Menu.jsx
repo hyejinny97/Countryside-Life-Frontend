@@ -1,4 +1,4 @@
-function Menu({data, config}) {
+function Menu({data, config, className}) {
     const renderItems = data.map(item => {
         return (
             <li className="Menu__item" key={item.label}>
@@ -8,7 +8,7 @@ function Menu({data, config}) {
     });
 
     return (
-        <ul className="Menu__list" style={config.horizontal && {display: 'flex', alignItems: 'center'}}>
+        <ul className={`Menu__list ${className}`} style={config.horizontal && {display: 'flex', alignItems: 'center'}}>
             {renderItems}
         </ul>
     );
