@@ -5,10 +5,17 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 0 3rem;
+    padding: 0 5rem;
     // border: 1px solid red;
     font-size: 1rem;
     color: $secondary-dark;
+
+    @media screen and (max-width:$lg) {
+        & {
+            padding: 0 3rem;
+            font-size: 1rem;
+        }
+    }
 
     @media screen and (max-width:$md) {
         & {
@@ -27,8 +34,14 @@
 
 .container__wrap {
     width: 100%;
-    max-width: $lg-max-width;
+    max-width: $xl-max-width;
     // border: 1px solid blue;
+
+    @media screen and (max-width:$lg) {
+        & {
+            max-width: $lg-max-width;
+        }
+    }
 
     @media screen and (max-width:$md) {
         & {

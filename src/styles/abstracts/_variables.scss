@@ -1,11 +1,13 @@
 // breakpoints
 $sm: 576px;
 $md: 768px;
+$lg: 992px;
 
 // viewport width에 따른 max-width
 $sm-max-width: 500px;
 $md-max-width: 600px;
-$lg-max-width: 1200px;
+$lg-max-width: 900px;
+$xl-max-width: 1000px;
 
 // colors
 $primary: #C9F394;
