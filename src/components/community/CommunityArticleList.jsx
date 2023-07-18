@@ -1,6 +1,11 @@
-function CommunityArticleList({ data }) {
+import { CommunityArticleItem } from '@components/community';
+
+function CommunityArticleList() {
     return (
-        <div>리스트</div>
+        <div className='CommunityArticleList'>
+            <CommunityArticleItem />
+            <CommunityArticleItem />
+        </div>
     );
 }
 

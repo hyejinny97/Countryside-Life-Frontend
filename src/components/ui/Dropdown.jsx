@@ -7,7 +7,7 @@ function Dropdown({ label='선택', options, value, onChange }) {
 
     useEffect(() => {
         const handleBodyClick = (e) => {
-            if (dropdown?.current.contains(e.target)) return
+            if (dropdown?.current?.contains(e.target)) return
             
             setIsOpened(false)
         };
