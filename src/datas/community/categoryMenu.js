@@ -24,7 +24,6 @@ import {
     CATEGORY_FESTIVAL,
     CATEGORY_SIGHT,
     CATEGORY_FREE,
-    ORDER_CREATED_AT,
 } from '@constants';
 
 const data = [
@@ -42,7 +41,7 @@ const data = [
 ];
 
 data.forEach((item, i) => {
-    item.to = `${PATH_COMMUNITY}?category=${item.value}&ordering=${ORDER_CREATED_AT}&region=전체`;
+    item.to = `${PATH_COMMUNITY}?category=${item.value}`;
 })
 
 export {data};

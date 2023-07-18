@@ -29,7 +29,24 @@ const ORDER_CREATED_AT = 'created_at';
 const ORDER_LIKES = 'likes';
 
 // community filter - region(지역) 
-
+const REGION_ALL = '전체';
+const REGION_GANGWON = '강원도';
+const REGION_GYEONGGI = '경기도';
+const REGION_GYEONGNAM = '경상남도';
+const REGION_GYEONGBUK = '경상북도';
+const REGION_GWANGJU = '광주광역시';
+const REGION_DAEGU = '대구광역시';
+const REGION_DAEJEON = '대전광역시';
+const REGION_BUSAN = '부산광역시';
+const REGION_SEOUL = '서울특별시';
+const REGION_SEJONG = '세종특별자치시';
+const REGION_ULSAN = '울산광역시';
+const REGION_INCHEON = '인천광역시';
+const REGION_JEONNAM = '전라남도';
+const REGION_JEONBUK = '전라북도';
+const REGION_JEJU = '제주특별자치도';
+const REGION_CHUNGNAM = '충청남도';
+const REGION_CHUNGBUK = '충청북도';
 
 export { 
     PATH_ROOT, 
@@ -54,4 +71,22 @@ export {
     CATEGORY_FESTIVAL,
     CATEGORY_SIGHT,
     CATEGORY_FREE,
+    REGION_ALL,
+    REGION_GANGWON,
+    REGION_GYEONGGI,
+    REGION_GYEONGNAM,
+    REGION_GYEONGBUK,
+    REGION_GWANGJU,
+    REGION_DAEGU,
+    REGION_DAEJEON,
+    REGION_BUSAN,
+    REGION_SEOUL,
+    REGION_SEJONG,
+    REGION_ULSAN,
+    REGION_INCHEON,
+    REGION_JEONNAM,
+    REGION_JEONBUK,
+    REGION_JEJU,
+    REGION_CHUNGNAM, 
+    REGION_CHUNGBUK,
 }
