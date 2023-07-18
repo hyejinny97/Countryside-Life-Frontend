@@ -5,6 +5,7 @@ export { default as EditProfile } from './EditProfile';
 export { default as ChangePassword } from './ChangePassword';
 export { default as MyPage } from './MyPage';
 export { default as Community } from './Community';
+export { default as CreateCommunity } from './CreateCommunity';
 
 export { action as signupAction } from './Signup';
 export { action as editProfileAction } from './EditProfile';

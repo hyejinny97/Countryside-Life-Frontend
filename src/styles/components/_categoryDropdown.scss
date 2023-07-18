@@ -1,0 +1,8 @@
+.CategoryDropdown {
+    width: 18rem;
+    
+    @media screen and (max-width: $sm) {
+        margin-bottom: 0.5rem;
+        width: 16rem;
+    }
+}

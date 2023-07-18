@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
-function Dropdown({ label='선택', options, value, onChange }) {
+function Dropdown({ label='선택', options, value, onChange, className, style, title }) {
     const [isOpened, setIsOpened] = useState(false);
     const dropdown = useRef();
 
@@ -30,7 +30,7 @@ function Dropdown({ label='선택', options, value, onChange }) {
     })
 
     return (
-        <div className="Dropdown" ref={dropdown}>
+        <div className={`Dropdown ${className}`} ref={dropdown} style={style} title={title}>
             <div className='Dropdown__head' onClick={() => setIsOpened(!isOpened)}>
                 {value?.label || label}
                 {isOpened ? <IoIosArrowUp /> : <IoIosArrowDown />}

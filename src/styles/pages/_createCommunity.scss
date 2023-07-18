@@ -1,0 +1,37 @@
+.CreateCommunity {
+    &__dropdown-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        @media screen and (max-width: $sm) {
+            display: block;
+        }
+    }
+
+    &__title-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+
+    &__title-input {
+        margin-bottom: 0.2rem;
+        width: 100%;
+
+        & input {
+            border-style: dotted;
+            font-size: 1rem;
+        }
+    }
+
+    &__title-length {
+        font-weight: 700;
+        color: $primary-dark;
+
+        &--limit {
+            color: $secondary-dark;
+        }
+    }
+}
