@@ -1,0 +1,85 @@
+.CreateCommunity {
+    &__dropdown-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        @media screen and (max-width: $sm) {
+            display: block;
+        }
+    }
+
+    &__title-wrap {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    &__title-input {
+        margin-bottom: 0.2rem;
+        width: 100%;
+
+        & input {
+            border-style: dotted;
+            font-size: 1rem;
+        }
+    }
+
+    &__title-length, &__upload-image-length {
+        align-self: end;
+        font-weight: 700;
+        color: $primary-dark;
+
+        &--limit {
+            color: $secondary-dark;
+        }
+    }
+
+    &__upload-image-wrap {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 3rem;
+    }
+
+    &__upload-image-list {
+        display: flex;
+        align-items: center;
+    }
+
+    &__upload-image-item {
+        position: relative;
+        margin-right: 1rem;
+        width: 5rem;
+        height: 5rem;
+
+        & svg {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1rem;
+            color: black;
+            z-index: 1;
+            cursor: pointer;
+        }
+    }
+
+    &__upload-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.2rem;
+    }
+
+    &__button-wrap {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__button {
+        width: 10rem;
+    }
+}

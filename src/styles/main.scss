@@ -14,6 +14,7 @@
 @import 'components/page';
 @import 'components/dropdown';
 @import 'components/badge';
+@import 'components/textarea';
 
 @import 'components/accountBox';
 @import 'components/imagefile-input';
@@ -22,6 +23,9 @@
 @import 'components/orderList';
 @import 'components/communityArticleList';
 @import 'components/communityArticleItem';
+@import 'components/categoryDropdown';
+@import 'components/contentTextarea';
+@import 'components/articleImageInput';
 
 @import 'layout/navbar';
 @import 'layout/subnavbar';
@@ -34,3 +38,4 @@
 @import 'pages/change-password';
 @import 'pages/my-page';
 @import 'pages/community';
+@import 'pages/createCommunity';

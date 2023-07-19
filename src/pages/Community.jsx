@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { BsPencil } from "react-icons/bs";
 import { Category, SearchForm, OrderList, RegionDropdown, CommunityArticleList } from '@components/community';
 import { Page } from '@components/ui';
+import { PATH_CREATECOMMUNITY } from '@constants';
 
 async function loader() {
     console.log('커뮤니티 로더')
@@ -23,7 +24,7 @@ function Community() {
                     <CommunityArticleList />
                 </div>
             </div>
-            <Link className='Community__write-button' title='게시글 작성하기'>
+            <Link className='Community__write-button' title='게시글 작성하기' to={PATH_CREATECOMMUNITY}>
                 <BsPencil />
             </Link>
         </Page>

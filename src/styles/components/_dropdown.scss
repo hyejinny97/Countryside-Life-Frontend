@@ -4,7 +4,7 @@
 
     &__head {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         padding: 0.1rem 1rem;
         border: 1px solid $secondary-light;
@@ -26,6 +26,7 @@
         border: 1px solid $secondary-light;
         border-top: none;
         background-color: white;
+        z-index: 1;
     }
 
     &__option {
