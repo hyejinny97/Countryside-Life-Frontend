@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form } from 'react-router-dom';
 import { Page, Input } from '@components/ui';
-import { CategoryDropdown, SimpleRegionDropdown } from '@components/community';
+import { CategoryDropdown, SimpleRegionDropdown, ContentTextarea } from '@components/community';
 
 function CreateCommunity() {
     const [titleLength, setTitleLength] = useState(0);
@@ -30,6 +30,7 @@ function CreateCommunity() {
                         <span className='CreateCommunity__title-length--limit'>&nbsp;/&nbsp;50</span>
                     </span>
                 </div>
+                <ContentTextarea />
             </Form>
         </Page>
     );

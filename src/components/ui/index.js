@@ -9,3 +9,4 @@ export { default as  Spinner } from './Spinner';
 export { default as  Page } from './Page';
 export { default as  Dropdown } from './Dropdown';
 export { default as  Badge } from './Badge';
+export { default as  Textarea } from './Textarea';
