@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import classname from 'classnames';
 
-function ImageFileInput({ name, label, labelContent, className, ...rest }) {
+function ImageFileInput({ name, label, labelContent, value, multiple, className, ...rest }) {
     const inputClassName = classname("ImageFileInput", className)
-    
+
     return (
         <div className={inputClassName}>
             <label className="ImageFileInput__label" htmlFor={label}>
@@ -15,6 +15,8 @@ function ImageFileInput({ name, label, labelContent, className, ...rest }) {
                 name={name} 
                 accept='image/' 
                 id={label} 
+                multiple={multiple ? 'multiple': ''}
+                files={value}
                 {...rest}
             />
         </div>

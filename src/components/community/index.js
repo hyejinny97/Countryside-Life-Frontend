@@ -7,3 +7,4 @@ export { default as CommunityArticleList } from './CommunityArticleList';
 export { default as CommunityArticleItem } from './CommunityArticleItem';
 export { default as CategoryDropdown } from './CategoryDropdown';
 export { default as ContentTextarea } from './ContentTextarea';
+export { default as ArticleImageInput } from './ArticleImageInput';
