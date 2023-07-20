@@ -1,5 +1,5 @@
 import { Page, Badge, Line } from '@components/ui';
-import { UserImage, WriterInfo, MutateLinks } from '@components/community';
+import { UserImage, WriterInfo, MutateLinks, Like } from '@components/community';
 
 function action() {
     console.log('CommunityDetail action');
@@ -7,6 +7,7 @@ function action() {
 }
 
 function CommunityDetail() {
+    console.log('디테일 컴포넌트')
     return (
         <Page className='CommunityDetail'>
             <div className='CommunityDetail__head'>
@@ -17,8 +18,9 @@ function CommunityDetail() {
                         <UserImage />
                         <WriterInfo />
                     </div>
-                    <MutateLinks article editPath='/community' articleId={2} />
+                    {/* <MutateLinks article editPath='/community' articleId={2} /> */}
                     {/* <MutateLinks comment commentId={1} handleEditClick={(commentId) => console.log('EditClick')} handleDeleteClick={(commentId) => console.log('DeleteClick')} /> */}
+                    <Like />
                 </div>
             </div>
             <Line secondaryLight />

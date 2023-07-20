@@ -12,3 +12,4 @@ export { default as UserImage } from './UserImage';
 export { default as WriterInfo } from './WriterInfo';
 export { default as MutateLinks } from './MutateLinks';
 export { default as RemoveTextModal } from './RemoveTextModal';
+export { default as Like } from './Like';
