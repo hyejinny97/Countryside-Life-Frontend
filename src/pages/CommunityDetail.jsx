@@ -1,5 +1,5 @@
 import { Page, Badge, Line } from '@components/ui';
-import { UserImage, WriterInfo, MutateLinks, Like } from '@components/community';
+import { UserImage, WriterInfo, MutateLinks, Like, ArticleImageList, ArticleCntList } from '@components/community';
 
 function action() {
     console.log('CommunityDetail action');
@@ -7,7 +7,6 @@ function action() {
 }
 
 function CommunityDetail() {
-    console.log('디테일 컴포넌트')
     return (
         <Page className='CommunityDetail'>
             <div className='CommunityDetail__head'>
@@ -24,6 +23,20 @@ function CommunityDetail() {
                 </div>
             </div>
             <Line secondaryLight />
+            <div className='CommunityDetail__body'>
+                <p className='CommunityDetail__content'>
+                    4월에 심은 토마토가 벌써 이렇게 자라서 빨갛게 익었어요~
+                    조만간 따 먹어도 될 것 같아요ㅎㅎ
+                </p>
+                <ArticleImageList />
+                <ArticleCntList />
+            </div>
+            <Line secondaryLight />
+            <div className='CommunityDetail__foot'>
+                <div className='CommunityDetail__comment-input-wrap'>
+                    <UserImage />
+                </div>
+            </div>
         </Page>
     );
 }

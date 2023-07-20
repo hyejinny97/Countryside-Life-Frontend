@@ -1,0 +1,20 @@
+.ArticleCntList {
+    &__cnt-list {
+        display: flex;
+        align-items: center;
+    }
+
+    &__cnt-item {
+        display: flex;
+        align-items: center;
+        margin-right: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: $secondary;
+
+        & svg {
+            margin-right: 0.1rem;
+            font-size: 1.2rem;
+        }
+    }
+}
