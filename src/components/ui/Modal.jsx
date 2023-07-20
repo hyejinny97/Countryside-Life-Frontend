@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { IoMdClose } from "react-icons/io";
 
 function Modal({ 
-    closeIcon, 
+    closeIcon=<IoMdClose />, 
     children, 
     handleModalClose 
 }) {

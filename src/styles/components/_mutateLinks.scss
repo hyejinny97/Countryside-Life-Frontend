@@ -1,0 +1,8 @@
+.MutateLinks {
+    color: $secondary-dark;
+    cursor: pointer;
+
+    & a {
+        color: $secondary-dark;
+    }
+}

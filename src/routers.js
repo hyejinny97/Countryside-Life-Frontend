@@ -5,8 +5,8 @@ import {
     redirect
   } from "react-router-dom";
 import { 
-  Root, Login, Signup, EditProfile, ChangePassword, MyPage, Community, CreateCommunity,
-  signupAction, editProfileAction, changePasswordAction, loginAction,
+  Root, Login, Signup, EditProfile, ChangePassword, MyPage, Community, CreateCommunity, CommunityDetail,
+  signupAction, editProfileAction, changePasswordAction, loginAction, communityDetailAction,
   rootLoader, requireAuthLoader, communityLoader,
 } from '@pages';
 import { 
@@ -19,6 +19,7 @@ import {
   PATH_MYPAGE,
   PATH_COMMUNITY,
   PATH_CREATECOMMUNITY,
+  PATH_COMMUNITYDETAIL,
 } from '@constants';
 import { blacklistRefresh } from '@helpers';
 import { resetUserInfo, store } from '@store';
@@ -79,6 +80,11 @@ const router = createBrowserRouter([
       {
         path: PATH_CREATECOMMUNITY,
         element: <CreateCommunity />,
+      },
+      {
+        path: PATH_COMMUNITYDETAIL,
+        action: communityDetailAction,
+        element: <CommunityDetail />,
       },
     ]
   },

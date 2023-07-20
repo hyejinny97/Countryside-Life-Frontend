@@ -39,7 +39,7 @@ function Input({ type, name, label, initialValue, maxLength, getValue, helpText,
                 onChange={(e) => {
                     if (e.target.value.length > maxLength) return;
                     setValue(e.target.value);
-                    getValue(e.target.value)
+                    getValue && getValue(e.target.value);
                 }}
                 />
             <div className='Input__input-right'>{right}</div>
