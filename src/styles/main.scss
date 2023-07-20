@@ -18,7 +18,7 @@
 
 @import 'components/accountBox';
 @import 'components/imagefile-input';
-@import 'components/remove-account-modal';
+@import 'components/removeModal';
 @import 'components/category';
 @import 'components/orderList';
 @import 'components/communityArticleList';
@@ -26,6 +26,14 @@
 @import 'components/categoryDropdown';
 @import 'components/contentTextarea';
 @import 'components/articleImageInput';
+@import 'components/userImage';
+@import 'components/writerInfo';
+@import 'components/mutateLinks';
+@import 'components/like';
+@import 'components/articleImageList';
+@import 'components/articleCntList';
+@import 'components/commentForm';
+@import 'components/comment';
 
 @import 'layout/navbar';
 @import 'layout/subnavbar';
@@ -39,3 +47,4 @@
 @import 'pages/my-page';
 @import 'pages/community';
 @import 'pages/createCommunity';
+@import 'pages/communityDetail';

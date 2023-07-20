@@ -1,0 +1,10 @@
+.WriterInfo {
+    &__username {
+        font-weight: 700;
+    }
+
+    &__created {
+        font-weight: 600;
+        color: $secondary;
+    }
+}

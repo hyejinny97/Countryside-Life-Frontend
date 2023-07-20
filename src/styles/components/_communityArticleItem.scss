@@ -61,48 +61,10 @@
         cursor: pointer;
     }
 
-    &__article-image-list {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(1, minmax(auto, 10rem));
-        column-gap: 0.5rem;
-        row-gap: 0.5rem;
-
-      @media screen and (max-width: $md) {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, minmax(auto, 10rem));
-      }  
-    }
-
-    &__article-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
     &__foot {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    &__cnt-list {
-        display: flex;
-        align-items: center;
-    }
-
-    &__cnt-item {
-        display: flex;
-        align-items: center;
-        margin-right: 0.5rem;
-        font-size: 1rem;
-        font-weight: 600;
-        color: $secondary;
-
-        & svg {
-            margin-right: 0.1rem;
-            font-size: 1.2rem;
-        }
     }
 
     &__created-time {

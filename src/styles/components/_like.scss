@@ -1,0 +1,22 @@
+.Like {
+    & button {
+        padding: 0.4rem 0.5rem 0.2rem 0.5rem;
+        background-color: white;
+        border: 1px solid $secondary-light;
+        border-radius: 50%;
+        box-shadow: 0.2rem 0.2rem 0.2rem $secondary-light;
+        cursor: pointer;
+
+        & svg {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__full-heart {
+        color: $danger;
+    }
+
+    &__empty-heart {
+        color: $secondary;
+    }
+}
