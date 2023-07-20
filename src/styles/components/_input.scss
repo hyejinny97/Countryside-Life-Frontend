@@ -40,8 +40,15 @@
         }
 
         &--no-line {
-            margin-left: 0.5rem;
             border: none;
+        }
+        
+        &--left-gap {
+            margin-left: 0.5rem;
+        }
+
+        &--right-gap {
+            margin-right: 0.5rem;
         }
     }
 

@@ -2,7 +2,23 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classname from 'classnames';
 
-function Input({ type, name, label, initialValue, maxLength, getValue, helpText, invalidTexts, placeholder, left, right, className, clear }) {    
+function Input({ 
+    type, 
+    name, 
+    label, 
+    initialValue, 
+    maxLength, 
+    getValue, 
+    helpText, 
+    invalidTexts, 
+    placeholder, 
+    left, 
+    right,
+    handleLeftClick,
+    handleRightClick, 
+    className, 
+    clear 
+}) {    
     const [value, setValue] = useState(initialValue || '');
     
     useEffect(() => {
@@ -12,6 +28,8 @@ function Input({ type, name, label, initialValue, maxLength, getValue, helpText,
     const inputClassName = classname('Input__input', {
         'Input__input--red': invalidTexts && invalidTexts.length >= 1 && (!left || !right),
         'Input__input--no-line': left || right,
+        'Input__input--left-gap': left,
+        'Input__input--right-gap': right,
     })
 
     const inputContainerClassName = classname('Input__input-container', {
@@ -27,7 +45,7 @@ function Input({ type, name, label, initialValue, maxLength, getValue, helpText,
         {label && <label className='Input__label' htmlFor={label}>{label}</label>}
         {helpText && <p className='Input__help-text'>{helpText}</p>}
         <div className={inputContainerClassName}>
-            <div className='Input__input-left'>{left}</div>
+            <div className='Input__input-left' onClick={handleLeftClick}>{left}</div>
             <input 
                 className={inputClassName} 
                 type={type} 
@@ -42,7 +60,7 @@ function Input({ type, name, label, initialValue, maxLength, getValue, helpText,
                     getValue && getValue(e.target.value);
                 }}
                 />
-            <div className='Input__input-right'>{right}</div>
+            <div className='Input__input-right' onClick={handleRightClick}>{right}</div>
         </div>
         {renderValidTexts}
     </div>

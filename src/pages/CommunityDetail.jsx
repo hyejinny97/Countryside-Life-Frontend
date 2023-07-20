@@ -1,5 +1,5 @@
 import { Page, Badge, Line } from '@components/ui';
-import { UserImage, WriterInfo, MutateLinks, Like, ArticleImageList, ArticleCntList } from '@components/community';
+import { UserImage, WriterInfo, MutateLinks, Like, ArticleImageList, ArticleCntList, CommentForm } from '@components/community';
 
 function action() {
     console.log('CommunityDetail action');
@@ -35,6 +35,7 @@ function CommunityDetail() {
             <div className='CommunityDetail__foot'>
                 <div className='CommunityDetail__comment-input-wrap'>
                     <UserImage />
+                    <CommentForm />
                 </div>
             </div>
         </Page>

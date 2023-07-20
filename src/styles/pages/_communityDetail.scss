@@ -25,10 +25,10 @@
     &__user-info {
         display: flex;
         align-items: center;
+    }
 
-        & .UserImage {
-            margin-right: 1rem;
-        }
+    & .UserImage {
+        margin-right: 1rem;
     }
 
     &__body {
@@ -58,5 +58,10 @@
         @media screen and (max-width: $sm) {
             padding: 1rem 0 0 0;
         }
+    }
+
+    &__comment-input-wrap {
+        display: flex;
+        align-items: center;
     }
 }

@@ -15,3 +15,4 @@ export { default as RemoveTextModal } from './RemoveTextModal';
 export { default as Like } from './Like';
 export { default as ArticleImageList } from './ArticleImageList';
 export { default as ArticleCntList } from './ArticleCntList';
+export { default as CommentForm } from './CommentForm';
