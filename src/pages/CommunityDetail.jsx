@@ -1,5 +1,14 @@
 import { Page, Badge, Line } from '@components/ui';
-import { UserImage, WriterInfo, MutateLinks, Like, ArticleImageList, ArticleCntList, CommentForm } from '@components/community';
+import { 
+    UserImage, 
+    WriterInfo, 
+    MutateLinks, 
+    Like, 
+    ArticleImageList, 
+    ArticleCntList, 
+    CommentForm,
+    Comment
+} from '@components/community';
 
 function action() {
     console.log('CommunityDetail action');
@@ -18,7 +27,6 @@ function CommunityDetail() {
                         <WriterInfo />
                     </div>
                     {/* <MutateLinks article editPath='/community' articleId={2} /> */}
-                    {/* <MutateLinks comment commentId={1} handleEditClick={(commentId) => console.log('EditClick')} handleDeleteClick={(commentId) => console.log('DeleteClick')} /> */}
                     <Like />
                 </div>
             </div>
@@ -36,6 +44,10 @@ function CommunityDetail() {
                 <div className='CommunityDetail__comment-input-wrap'>
                     <UserImage />
                     <CommentForm />
+                </div>
+                <div className='CommunityDetail__comment-list'>
+                    <Comment />
+                    <Comment />
                 </div>
             </div>
         </Page>
