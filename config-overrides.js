@@ -12,6 +12,7 @@ module.exports = function override(config) {
     '@store': 'src/store',
     '@services': 'src/services',
     '@helpers': 'src/helpers',
+    '@utils': 'src/utils',
   })(config)
 
   return config

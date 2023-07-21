@@ -1,0 +1,21 @@
+.EmptyBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10rem;
+    border: 1px dashed $secondary;
+    color: $secondary;
+
+    &__message {
+        margin-bottom: 0.5rem;
+    }
+
+    &__icon {
+        & svg {
+            font-size: 2rem;
+            color: $secondary;
+        }
+    }
+}
