@@ -11,7 +11,7 @@ async function loader({ request }) {
     const url = new URL(request.url);
     const searchParams = paramsToObject(url.searchParams.entries());
 
-    const rst = await store.dispatch(communityApi.endpoints.fetchAllArticles.initiate(searchParams));
+    await store.dispatch(communityApi.endpoints.fetchAllArticles.initiate(searchParams));
 
     return searchParams;
 }
