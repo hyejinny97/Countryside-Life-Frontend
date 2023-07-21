@@ -50,6 +50,9 @@ const REGION_JEJU = '제주특별자치도';
 const REGION_CHUNGNAM = '충청남도';
 const REGION_CHUNGBUK = '충청북도';
 
+// 페이지당 데이터 최대 개수
+const PAGE_SIZE = 10;
+
 export { 
     PATH_ROOT, 
     PATH_LOGIN, 
@@ -93,4 +96,5 @@ export {
     REGION_JEJU,
     REGION_CHUNGNAM, 
     REGION_CHUNGBUK,
+    PAGE_SIZE,
 }

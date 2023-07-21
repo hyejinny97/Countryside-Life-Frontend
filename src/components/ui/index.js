@@ -11,3 +11,6 @@ export { default as  Page } from './Page';
 export { default as  Dropdown } from './Dropdown';
 export { default as  Badge } from './Badge';
 export { default as  Textarea } from './Textarea';
+export { default as  EmptyBox } from './EmptyBox';
+export { default as  ErrorBox } from './ErrorBox';
+export { default as  Pagination } from './Pagination';

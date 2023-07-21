@@ -2,13 +2,13 @@
     &__article-image-list {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(1, minmax(auto, 10rem));
+        grid-template-rows: repeat(auto, minmax(auto, 10rem));
         column-gap: 0.5rem;
         row-gap: 0.5rem;
 
       @media screen and (max-width: $md) {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(1, minmax(auto, 10rem));
+        grid-template-rows: repeat(auto, minmax(auto, 10rem));
       }  
     }
 

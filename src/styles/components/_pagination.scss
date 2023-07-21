@@ -1,0 +1,25 @@
+.Pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__number {
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.1rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $secondary-light;
+        }
+
+        &--active {
+            background-color: $primary;
+            font-weight: 600;
+            color: white;
+
+            &:hover {
+                background-color: $primary;
+            }
+        }
+    }
+}

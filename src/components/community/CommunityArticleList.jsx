@@ -1,10 +1,13 @@
 import { CommunityArticleItem } from '@components/community';
 
-function CommunityArticleList() {
+function CommunityArticleList({ data }) {
+    const renderArticleItems = data.map(item => {
+        return <CommunityArticleItem key={item.id} data={item} />
+    })
+
     return (
         <div className='CommunityArticleList'>
-            <CommunityArticleItem />
-            <CommunityArticleItem />
+            {renderArticleItems}
         </div>
     );
 }
