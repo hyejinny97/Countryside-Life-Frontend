@@ -29,13 +29,17 @@ async function editLoader({params:{articleId}}) {
     
     try {
         await silentRefresh();
-        
+    } catch(e) {
+        store.dispatch(runToast('글을 수정하기 전 먼저 로그인해주세요.'));
+        return redirect(PATH_LOGIN);
+    }
+
+    try {
         const response = await store.dispatch(communityApi.endpoints.fetchArticle.initiate(articleId));
         if (store.getState().user.id !== response.data.user.id) return redirect(PATH_COMMUNITY);
         return response.data;
     } catch(e) {
-        store.dispatch(runToast('글을 수정하기 전 먼저 로그인해주세요.'));
-        return redirect(PATH_LOGIN);
+        return redirect(PATH_COMMUNITY);
     }
 }
 
