@@ -20,4 +20,8 @@ setupListeners(store.dispatch);
 export { store };
 export { setUserInfo, resetUserInfo, updateUserInfo } from '@store/slices/userSlice';
 export { runToast } from '@store/slices/toastSlice';
-export { communityApi, useFetchAllArticlesQuery } from '@store/apis/communityApi';
+export { 
+    communityApi, 
+    useFetchAllArticlesQuery, 
+    useCreateArticleMutation 
+} from '@store/apis/communityApi';

@@ -13,7 +13,9 @@ export { action as editProfileAction } from './EditProfile';
 export { action as changePasswordAction } from './ChangePassword';
 export { action as loginAction } from './Login';
 export { action as communityDetailAction } from './CommunityDetail';
+export { action as createCommunityAction } from './CreateCommunity';
 
 export { loader as rootLoader } from './Root';
 export { loader as requireAuthLoader } from './MyPage';
 export { loader as communityLoader } from './Community';
+export { loader as createCommunityLoader } from './CreateCommunity';

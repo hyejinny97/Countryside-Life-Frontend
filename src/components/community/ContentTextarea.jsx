@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Textarea } from '@components/ui';
 
-function ContentTextarea() {
+function ContentTextarea({ invalidTexts }) {
     const [value, setValue] = useState(null);
 
     const textareaProps = { 
         name: 'content', 
         maxLength: 5000, 
         rows: 10, 
-        invalidTexts: [], 
+        invalidTexts: invalidTexts || [], 
         placeholder: '본문(필수)\n- 최소 1 ~ 5,000자 이내로 작성할 수 있어요.\n- 운영 정책에 맞지 않는 경우 숨김 처리 돼요.', 
         className: 'ContentTextarea__textarea', 
         value: value,

@@ -1,50 +1,54 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { BsCamera } from "react-icons/bs";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { ImageFileInput } from '@components/ui';
 
 function ArticleImageInput() {
-    const [images, setImages] = useState([]);
-
-    const handleImageUpload = (files) => {
+    const [images, setImages] = useState({});
+    const imageList = useRef();
+ 
+    const handleImageUpload = (files, idx) => {
         const imageUrl = URL.createObjectURL(files[0]);
-        setImages([...images, {file: files[0], imageUrl}]);
+        setImages({...images, [idx]: imageUrl});
     }
 
-    const handleImageRemove = (curImage) => {
-        setImages(images.filter(image => image !== curImage));
+    const handleImageRemove = (curIdx) => {
+        const articleImageInputs = imageList.current.querySelectorAll('.ArticleImageInput input');
+        articleImageInputs[curIdx].value = '';
+        
+        delete images[curIdx];
+        setImages({...images});
     }
 
-    const renderImages = images.map(image => {
+    const renderImages = Object.entries(images).map(([idx, image]) => {
         return (
-            <div className='ArticleImageInput__upload-image-item'>
-                <img key={image.imageUrl} className='ArticleImageInput__upload-image' src={image.imageUrl} alt='업로드이미지' />
-                <AiFillCloseCircle onClick={() => handleImageRemove(image)} />
+            <div className='ArticleImageInput__upload-image-item' key={image}>
+                <img className='ArticleImageInput__upload-image' src={image} alt='업로드이미지' />
+                <AiFillCloseCircle onClick={() => handleImageRemove(idx)} />
             </div>
         );
     })
 
-    const newFileList = new DataTransfer();
-    images.map(image => newFileList.items.add(image.file));
-
-    const imageInputProps = { 
-        name: 'article_images', 
-        label: 'article_image', 
-        labelContent: <BsCamera />, 
-        multiple: true,
-        className: 'ArticleImageInput', 
-        value: newFileList.files,
-        onChange: (e) => handleImageUpload(e.target.files),
-    }
+    const renderImageInputs = Array(3).fill(0).map((_, idx) => {
+        const imageInputProps = { 
+            name: `article_image${idx + 1}`, 
+            label: `article_image${idx + 1}`, 
+            labelContent: <BsCamera />, 
+            className: `ArticleImageInput ${Object.keys(images).length === idx ? 'ArticleImageInput--show':''}`, 
+            onChange: (e) => handleImageUpload(e.target.files, idx),
+        }
+        
+        return <ImageFileInput key={idx} {...imageInputProps} />;
+    })
 
     return (
         <div className='ArticleImageInput__upload-image-wrap'>
-            <div className='ArticleImageInput__upload-image-list'>
-                {images.length < 3 && <ImageFileInput {...imageInputProps} />}
+            <div className='ArticleImageInput__upload-image-list' ref={imageList}>
+                {renderImageInputs}
                 {renderImages}
             </div>
             <span className='ArticleImageInput__upload-image-length'>
-                {images.length}
+                {Object.values(images).length}
                 <span className='ArticleImageInput__upload-image-length--limit'>&nbsp;/&nbsp;3</span>
             </span>
         </div>
