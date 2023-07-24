@@ -1,0 +1,27 @@
+.TitleInput {
+    &__title-wrap {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    &__title-input {
+        margin-bottom: 0.2rem;
+        width: 100%;
+
+        & input {
+            border-style: dotted;
+            font-size: 1rem;
+        }
+    }
+
+    &__title-length {
+        align-self: end;
+        font-weight: 700;
+        color: $primary-dark;
+
+        &--limit {
+            color: $secondary-dark;
+        }
+    }
+}

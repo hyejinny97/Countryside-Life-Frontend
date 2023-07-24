@@ -1,15 +1,10 @@
-.CategoryDropdown {
+.SimpleRegionDropdown {
     &__dropdown {
-        width: 18rem;
+        width: 7rem;
 
         &--red .Dropdown__head {
             border-color: $danger;
         }
-    }
-    
-    @media screen and (max-width: $sm) {
-        margin-bottom: 0.5rem;
-        width: 16rem;
     }
 
     &__invalid-text {

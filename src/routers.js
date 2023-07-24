@@ -6,8 +6,8 @@ import {
   } from "react-router-dom";
 import { 
   Root, Login, Signup, EditProfile, ChangePassword, MyPage, Community, CreateCommunity, CommunityDetail,
-  signupAction, editProfileAction, changePasswordAction, loginAction, communityDetailAction,
-  rootLoader, requireAuthLoader, communityLoader,
+  signupAction, editProfileAction, changePasswordAction, loginAction, communityDetailAction, createCommunityAction,
+  rootLoader, requireAuthLoader, communityLoader, createCommunityLoader,
 } from '@pages';
 import { 
   PATH_ROOT, 
@@ -41,8 +41,8 @@ const router = createBrowserRouter([
       },
       {
         path: PATH_LOGOUT,
-        loader: () => {
-          blacklistRefresh();
+        loader: async () => {
+          await blacklistRefresh();
           axios.defaults.headers.common['Authorization'] = '';
           store.dispatch(resetUserInfo());
           const cookies = new Cookies();
@@ -79,6 +79,8 @@ const router = createBrowserRouter([
       },
       {
         path: PATH_CREATECOMMUNITY,
+        loader: createCommunityLoader,
+        action: createCommunityAction,
         element: <CreateCommunity />,
       },
       {

@@ -1,8 +1,12 @@
 .ArticleImageInput {
-    display: inline-block;
+    display: none;
     margin-right: 1rem;
     border: 1px dotted $secondary;
     border-radius: 0.2rem;
+
+    &--show {
+        display: inline-block;
+    }
 
     & label {
         display: flex;
