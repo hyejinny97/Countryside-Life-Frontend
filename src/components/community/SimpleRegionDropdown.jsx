@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Dropdown } from '@components/ui';
 import { regionMenuData } from '@datas/community';
 
-function SimpleRegionDropdown({ invalidTexts }) {
-    const [select, setSelect] = useState(null);
+function SimpleRegionDropdown({ invalidTexts, initialValue }) {
+    const [select, setSelect] = useState(regionMenuData.find(data => data.value === initialValue) || null);
 
     return (
         <div className='SimpleRegionDropdown'>

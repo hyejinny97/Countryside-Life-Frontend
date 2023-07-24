@@ -22,6 +22,17 @@ const communityApi = createApi({
                     return [{ type: 'articles' }]
                 }
             }),
+            fetchArticle: builder.query({
+                query: (articleId) => {
+                    return {
+                        url: `/community/${articleId}/`,
+                        method: 'GET',
+                    };
+                },
+                providesTags: (result, error, articleId) => {
+                    return [{ type: 'article', articleId }]
+                }
+            }),
             createArticle: builder.mutation({
                 query: (formData) => {
                     return {
@@ -39,6 +50,36 @@ const communityApi = createApi({
                     return [{ type: 'articles' }]
                 }
             }),
+            editArticle: builder.mutation({
+                query: ({articleId, formData}) => {
+                    return {
+                        url: `/community/${articleId}/`,
+                        method: 'PUT',
+                        body: formData,
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                        formData: true,
+                    }
+                },
+                invalidatesTags: (result, error, {articleId}) => {
+                    return [{ type: 'articles' }, { type: 'article', articleId }]
+                }
+            }),
+            deleteArticle: builder.mutation({
+                query: (articleId) => {
+                    return {
+                        url: `/community/${articleId}/`,
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                    }
+                },
+                invalidatesTags: (result, error, articleId) => {
+                    return [{ type: 'articles' }]
+                }
+            }),
         }
     }
 });
@@ -47,4 +88,7 @@ export { communityApi };
 export const { 
     useFetchAllArticlesQuery,
     useCreateArticleMutation,
+    useFetchArticleQuery,
+    useEditArticleMutation,
+    useDeleteArticleMutation,
 } = communityApi;

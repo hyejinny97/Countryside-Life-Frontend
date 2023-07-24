@@ -1,14 +1,19 @@
 import { UserImage, WriterInfo, MutateLinks } from '@components/community';
 
-function Comment({ data }) {
+function Comment({ data:{id:commentId, content, created_at, user} }) {
     return (
         <div className='Comment'>
-            <UserImage />
+            <UserImage imageUrl={user.image}/>
             <div>
-                <WriterInfo />
-                <p className='Comment__content'>너무 잘 익었네요!ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ</p>
+                <WriterInfo nickName={user.nickname} createdTime={created_at} />
+                <p className='Comment__content'>{content}</p>
             </div>
-            <MutateLinks comment commentId={1} handleEditClick={(commentId) => console.log('EditClick')} handleDeleteClick={(commentId) => console.log('DeleteClick')} />
+            <MutateLinks 
+                comment 
+                commentId={commentId} 
+                handleEditClick={(commentId) => console.log('EditClick')} 
+                handleDeleteClick={(commentId) => console.log('DeleteClick')} 
+            />
         </div>
     );
 }

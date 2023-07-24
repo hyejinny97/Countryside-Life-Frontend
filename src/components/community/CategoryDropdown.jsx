@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Dropdown } from '@components/ui';
 import { categoryMenuData } from '@datas/community';
 
-function CategoryDropdown({ invalidTexts }) {
-    const [value, setValue] = useState(null);
+function CategoryDropdown({ invalidTexts, initialValue }) {
+    const [value, setValue] = useState(categoryMenuData.find(data => data.value === initialValue) || null);
 
     return (
         <div className='CategoryDropdown'>

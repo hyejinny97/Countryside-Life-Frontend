@@ -13,9 +13,12 @@ export { action as editProfileAction } from './EditProfile';
 export { action as changePasswordAction } from './ChangePassword';
 export { action as loginAction } from './Login';
 export { action as communityDetailAction } from './CommunityDetail';
-export { action as createCommunityAction } from './CreateCommunity';
+export { createAction as createCommunityAction } from './CreateCommunity';
+export { editAction as editCommunityAction } from './CreateCommunity';
 
 export { loader as rootLoader } from './Root';
 export { loader as requireAuthLoader } from './MyPage';
 export { loader as communityLoader } from './Community';
-export { loader as createCommunityLoader } from './CreateCommunity';
+export { createLoader as createCommunityLoader } from './CreateCommunity';
+export { editLoader as editCommunityLoader } from './CreateCommunity';
+export { loader as communityDetailLoader } from './CommunityDetail';

@@ -23,5 +23,8 @@ export { runToast } from '@store/slices/toastSlice';
 export { 
     communityApi, 
     useFetchAllArticlesQuery, 
-    useCreateArticleMutation 
+    useCreateArticleMutation,
+    useFetchArticleQuery,
+    useEditArticleMutation,
+    useDeleteArticleMutation,
 } from '@store/apis/communityApi';

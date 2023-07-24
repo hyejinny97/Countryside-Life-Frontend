@@ -6,8 +6,8 @@ import {
   } from "react-router-dom";
 import { 
   Root, Login, Signup, EditProfile, ChangePassword, MyPage, Community, CreateCommunity, CommunityDetail,
-  signupAction, editProfileAction, changePasswordAction, loginAction, communityDetailAction, createCommunityAction,
-  rootLoader, requireAuthLoader, communityLoader, createCommunityLoader,
+  signupAction, editProfileAction, changePasswordAction, loginAction, communityDetailAction, createCommunityAction, editCommunityAction, 
+  rootLoader, requireAuthLoader, communityLoader, createCommunityLoader, communityDetailLoader, editCommunityLoader,
 } from '@pages';
 import { 
   PATH_ROOT, 
@@ -20,6 +20,7 @@ import {
   PATH_COMMUNITY,
   PATH_CREATECOMMUNITY,
   PATH_COMMUNITYDETAIL,
+  PATH_EDITCOMMUNITY,
 } from '@constants';
 import { blacklistRefresh } from '@helpers';
 import { resetUserInfo, store } from '@store';
@@ -85,8 +86,15 @@ const router = createBrowserRouter([
       },
       {
         path: PATH_COMMUNITYDETAIL,
+        loader: communityDetailLoader,
         action: communityDetailAction,
         element: <CommunityDetail />,
+      },
+      {
+        path: PATH_EDITCOMMUNITY,
+        loader: editCommunityLoader,
+        action: editCommunityAction,
+        element: <CreateCommunity />,
       },
     ]
   },
