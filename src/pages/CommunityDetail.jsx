@@ -15,6 +15,8 @@ import { store, communityApi } from '@store';
 import { PATH_COMMUNITY } from '@constants';
 
 async function loader({ params:{articleId} }) {
+    await new Promise(resolve => setTimeout(resolve, 100))
+    
     const res = await store.dispatch(communityApi.endpoints.fetchArticle.initiate(articleId));
     
     return {data: res.data, articleId};
@@ -32,7 +34,7 @@ async function action({ request, params:{articleId} }) {
         if (data.target === 'comment') {
             await store.dispatch(communityApi.endpoints.deleteComment.initiate({articleId, commentId: data.commentId}));
             
-            await new Promise(resolve => setTimeout(resolve, 100))
+            // await new Promise(resolve => setTimeout(resolve, 100))
             return null;
         }
     } 
@@ -41,19 +43,19 @@ async function action({ request, params:{articleId} }) {
         if (data.hasOwnProperty('like')) {
             await store.dispatch(communityApi.endpoints.postLike.initiate(articleId));
             
-            await new Promise(resolve => setTimeout(resolve, 100))
+            // await new Promise(resolve => setTimeout(resolve, 100))
             return null;
         }
         if (data.hasOwnProperty('content') && data.state === 'create') {
             await store.dispatch(communityApi.endpoints.createComment.initiate({formData, articleId}));
             
-            await new Promise(resolve => setTimeout(resolve, 100))
+            // await new Promise(resolve => setTimeout(resolve, 100))
             return null;
         }
         if (data.hasOwnProperty('content') && data.state === 'edit') {
             await store.dispatch(communityApi.endpoints.editComment.initiate({formData, articleId, commentId: data.commentId}));
             
-            await new Promise(resolve => setTimeout(resolve, 100))
+            // await new Promise(resolve => setTimeout(resolve, 100))
             return null;
         }
     }
