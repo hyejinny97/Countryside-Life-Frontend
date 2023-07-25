@@ -17,4 +17,5 @@ export { default as ArticleImageList } from './ArticleImageList';
 export { default as ArticleCntList } from './ArticleCntList';
 export { default as CommentForm } from './CommentForm';
 export { default as Comment } from './Comment';
+export { default as CommentList } from './CommentList';
 export { default as TitleInput } from './TitleInput';

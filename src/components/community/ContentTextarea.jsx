@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Textarea } from '@components/ui';
 
-function ContentTextarea({ invalidTexts }) {
-    const [value, setValue] = useState(null);
+function ContentTextarea({ invalidTexts, initialValue }) {
+    const [value, setValue] = useState(initialValue || null);
 
     const textareaProps = { 
         name: 'content', 

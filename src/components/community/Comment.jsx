@@ -1,14 +1,39 @@
-import { UserImage, WriterInfo, MutateLinks } from '@components/community';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { UserImage, WriterInfo, MutateLinks, CommentForm } from '@components/community';
 
-function Comment({ data }) {
+function Comment({ data:{id:commentId, content, created_at, updated_at, user} }) {    
+    const [showEditForm, setShowEditForm] = useState(false);
+    const authenticatedUser = useSelector(state => state.user);
+
+    useEffect(() => {
+        setShowEditForm(false);
+    }, [updated_at])
+
+    const handleEditClick = () => {
+        setShowEditForm(true);
+    }
+
     return (
         <div className='Comment'>
-            <UserImage />
+            <UserImage imageUrl={user.image}/>
             <div>
-                <WriterInfo />
-                <p className='Comment__content'>너무 잘 익었네요!ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ</p>
+                <WriterInfo nickName={user.nickname} createdTime={created_at} />
+                {showEditForm ? 
+                    <CommentForm initialValue={content} edit commentId={commentId} />:
+                    <p className='Comment__content'>{content}</p>
+                }
             </div>
-            <MutateLinks comment commentId={1} handleEditClick={(commentId) => console.log('EditClick')} handleDeleteClick={(commentId) => console.log('DeleteClick')} />
+            {user.id === authenticatedUser.id &&                     
+                (showEditForm ? 
+                    <p className='Comment__text--editing'>수정 중...</p>:
+                    <MutateLinks 
+                        comment 
+                        commentId={commentId} 
+                        handleEditClick={handleEditClick} 
+                    />
+                )
+            }
         </div>
     );
 }

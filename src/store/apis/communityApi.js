@@ -18,8 +18,22 @@ const communityApi = createApi({
                     };
                 },
                 providesTags: (result, error, params) => {
-                    // return [{ type: 'articles', category: params.category || '전체' }]
-                    return [{ type: 'articles' }]
+                    const tags = result?.results?.map(rst => {
+                        return { type: 'article', id: rst.id }
+                    });
+
+                    return tags || [{ type: 'article', id: 'NoData' }];
+                }
+            }),
+            fetchArticle: builder.query({
+                query: (articleId) => {
+                    return {
+                        url: `/community/${articleId}/`,
+                        method: 'GET',
+                    };
+                },
+                providesTags: (result, error, articleId) => {
+                    return [{ type: 'article', id: articleId }]
                 }
             }),
             createArticle: builder.mutation({
@@ -35,8 +49,97 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error) => {
-                    // return [{ type: 'articles', category: '전체' }, { type: 'articles', category: result.category }]
-                    return [{ type: 'articles' }]
+                    return [{ type: 'article', id: result.id }, { type: 'article', id: 'NoData' }]
+                }
+            }),
+            editArticle: builder.mutation({
+                query: ({articleId, formData}) => {
+                    return {
+                        url: `/community/${articleId}/`,
+                        method: 'PUT',
+                        body: formData,
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                        formData: true,
+                    }
+                },
+                invalidatesTags: (result, error, {articleId}) => {
+                    return [{ type: 'article', id: articleId }]
+                }
+            }),
+            deleteArticle: builder.mutation({
+                query: (articleId) => {
+                    return {
+                        url: `/community/${articleId}/`,
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                    }
+                },
+                invalidatesTags: (result, error, articleId) => {
+                    return [{ type: 'article', id: articleId }]
+                }
+            }),
+            createComment: builder.mutation({
+                query: ({formData, articleId}) => {
+                    return {
+                        url: `/community/${articleId}/comments/`,
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                        formData: true,
+                    }
+                },
+                invalidatesTags: (result, error, {articleId}) => {
+                    return [{ type: 'article', id: articleId }]
+                }
+            }),
+            editComment: builder.mutation({
+                query: ({formData, articleId, commentId}) => {
+                    return {
+                        url: `/community/${articleId}/comments/${commentId}/`,
+                        method: 'PUT',
+                        body: formData,
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                        formData: true,
+                    }
+                },
+                invalidatesTags: (result, error, {articleId}) => {
+                    return [{ type: 'article', id: articleId }]
+                }
+            }),
+            deleteComment: builder.mutation({
+                query: ({articleId, commentId}) => {
+                    return {
+                        url: `/community/${articleId}/comments/${commentId}/`,
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                    }
+                },
+                invalidatesTags: (result, error, {articleId}) => {
+                    return [{ type: 'article', id: articleId }]
+                }
+            }),
+            postLike: builder.mutation({
+                query: (articleId) => {
+                    return {
+                        url: `/community/${articleId}/likes/`,
+                        method: 'POST',
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                    }
+                },
+                invalidatesTags: (result, error, articleId) => {
+                    return [{ type: 'article', id: articleId }]
                 }
             }),
         }
@@ -47,4 +150,11 @@ export { communityApi };
 export const { 
     useFetchAllArticlesQuery,
     useCreateArticleMutation,
+    useFetchArticleQuery,
+    useEditArticleMutation,
+    useDeleteArticleMutation,
+    useCreateCommentMutation,
+    useEditCommentMutation,
+    useDeleteCommentMutation,
+    usePostLikeMutation,
 } = communityApi;

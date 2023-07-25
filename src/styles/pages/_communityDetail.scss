@@ -45,10 +45,10 @@
 
     & .ArticleImageList__article-image-list {
         margin-bottom: 1rem;
-        grid-template-rows: repeat(auto, minmax(auto, 15rem));
+        grid-auto-rows: minmax(auto, 15rem);
     
         @media screen and (max-width: $md) {
-            grid-template-rows: repeat(auto, minmax(auto, 10rem));
+            grid-auto-rows: minmax(auto, 10rem);
           }
     }
 

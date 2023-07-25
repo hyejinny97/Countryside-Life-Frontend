@@ -14,6 +14,7 @@ function Textarea({
     right, 
     className, 
     value,
+    defaultValue,
     onChange,
 }) {    
     const textareaClassName = classname('Textarea__input', {
@@ -43,8 +44,8 @@ function Textarea({
                 rows={rows}
                 maxLength={maxLength}
                 onChange={(e) => onChange(e.target.value)}
-            >
-                {value}
+                defaultValue={value}
+            >   
             </textarea>
             <div className='Textarea__input-right'>{right}</div>
         </div>
@@ -66,6 +67,7 @@ Textarea.propTypes = {
     right: PropTypes.element,
     className: PropTypes.string,
     value: PropTypes.string,
+    defaultValue: PropTypes.string,
     onChange: PropTypes.func,
 }
 

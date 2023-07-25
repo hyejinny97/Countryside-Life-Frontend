@@ -17,7 +17,8 @@ function Input({
     handleLeftClick,
     handleRightClick, 
     className, 
-    clear 
+    clear,
+    disabled, 
 }) {    
     const [value, setValue] = useState(initialValue || '');
     
@@ -59,6 +60,7 @@ function Input({
                     setValue(e.target.value);
                     getValue && getValue(e.target.value);
                 }}
+                disabled={disabled}
                 />
             <div className='Input__input-right' onClick={handleRightClick}>{right}</div>
         </div>

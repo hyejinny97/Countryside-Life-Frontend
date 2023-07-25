@@ -5,8 +5,8 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 function Like({ likeUsers=[] }) {
     const fetcher = useFetcher();
     const authenticatedUserId = useSelector(state => state.user.id);
-    
-    let liked = likeUsers.some(likeUser => likeUser.id === authenticatedUserId);
+
+    let liked = likeUsers.some(likeUser => likeUser === authenticatedUserId);
     if (fetcher.formData) {
         liked = fetcher.formData.get('like') === 'true';
     }
