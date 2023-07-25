@@ -24,6 +24,7 @@ const communityApi = createApi({
             }),
             fetchArticle: builder.query({
                 query: (articleId) => {
+                    console.log('fetchArticle')
                     return {
                         url: `/community/${articleId}/`,
                         method: 'GET',
@@ -80,6 +81,20 @@ const communityApi = createApi({
                     return [{ type: 'articles' }]
                 }
             }),
+            postLike: builder.mutation({
+                query: (articleId) => {
+                    return {
+                        url: `/community/${articleId}/likes/`,
+                        method: 'POST',
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                    }
+                },
+                invalidatesTags: (result, error, articleId) => {
+                    return [{type: 'articles'}, { type: 'article', articleId }]
+                }
+            }),
         }
     }
 });
@@ -91,4 +106,5 @@ export const {
     useFetchArticleQuery,
     useEditArticleMutation,
     useDeleteArticleMutation,
+    usePostLikeMutation,
 } = communityApi;

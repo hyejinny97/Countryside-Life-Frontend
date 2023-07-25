@@ -27,4 +27,5 @@ export {
     useFetchArticleQuery,
     useEditArticleMutation,
     useDeleteArticleMutation,
+    usePostLikeMutation,
 } from '@store/apis/communityApi';

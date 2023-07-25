@@ -11,22 +11,37 @@ import {
     CommentForm,
     Comment
 } from '@components/community';
-import { store, communityApi, useFetchArticleQuery } from '@store';
+import { store, communityApi } from '@store';
 import { PATH_COMMUNITY } from '@constants';
 
 async function loader({ params:{articleId} }) {
-    await store.dispatch(communityApi.endpoints.fetchArticle.initiate(articleId));
-
-    return articleId;
+    const res = await store.dispatch(communityApi.endpoints.fetchArticle.initiate(articleId));
+    
+    return {data: res.data, articleId};
 }
 
-async function action({ params:{articleId} }) {
-    await store.dispatch(communityApi.endpoints.deleteArticle.initiate(articleId));
-    return redirect(PATH_COMMUNITY);
+async function action({ request, params:{articleId} }) {
+    const formData = Object.fromEntries(await request.formData());
+
+    if (request.method === 'DELETE') {
+        await store.dispatch(communityApi.endpoints.deleteArticle.initiate(articleId));
+        return redirect(PATH_COMMUNITY);
+    } 
+
+    if (request.method === 'POST') {
+        if (formData.hasOwnProperty('like')) {
+            await store.dispatch(communityApi.endpoints.postLike.initiate(articleId));
+            
+            await new Promise(resolve => setTimeout(resolve, 100))
+            return null;
+        }
+        if (formData.hasOwnProperty('content')) {
+            return null;
+        }
+    }
 }
 
 function CommunityDetail() {
-    const articleId = useLoaderData();
     const { data:{
         category, 
         title,
@@ -36,7 +51,7 @@ function CommunityDetail() {
         created_at,
         comments,
         like_users,
-    }, error } = useFetchArticleQuery(articleId);
+    }, error, articleId} = useLoaderData();
     const authenticatedUser = useSelector(state => state.user);
 
     return (
@@ -51,7 +66,7 @@ function CommunityDetail() {
                     </div>
                     {user.id === authenticatedUser.id ?
                         <MutateLinks article editPath='/community/edit' articleId={+articleId} />:
-                        <Like />
+                        (authenticatedUser.id !== -1 && <Like likeUsers={like_users} />)
                     }
                 </div>
             </div>
@@ -65,7 +80,7 @@ function CommunityDetail() {
             <div className='CommunityDetail__foot'>
                 <div className='CommunityDetail__comment-input-wrap'>
                     <UserImage imageUrl={user.image} />
-                    <CommentForm />
+                    <CommentForm disabled={authenticatedUser.id === -1} />
                 </div>
                 <div className='CommunityDetail__comment-list'>
                     {comments.map(comment => <Comment key={comment.id} data={comment} />)}
