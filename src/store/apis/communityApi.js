@@ -24,7 +24,6 @@ const communityApi = createApi({
             }),
             fetchArticle: builder.query({
                 query: (articleId) => {
-                    console.log('fetchArticle')
                     return {
                         url: `/community/${articleId}/`,
                         method: 'GET',
@@ -81,6 +80,52 @@ const communityApi = createApi({
                     return [{ type: 'articles' }]
                 }
             }),
+            createComment: builder.mutation({
+                query: ({formData, articleId}) => {
+                    return {
+                        url: `/community/${articleId}/comments/`,
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                        formData: true,
+                    }
+                },
+                invalidatesTags: (result, error, {articleId}) => {
+                    return [{ type: 'articles' }, { type: 'article', articleId }]
+                }
+            }),
+            editComment: builder.mutation({
+                query: ({formData, articleId, commentId}) => {
+                    return {
+                        url: `/community/${articleId}/comments/${commentId}/`,
+                        method: 'PUT',
+                        body: formData,
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                        formData: true,
+                    }
+                },
+                invalidatesTags: (result, error, {articleId}) => {
+                    return [{ type: 'article', articleId }]
+                }
+            }),
+            deleteComment: builder.mutation({
+                query: ({articleId, commentId}) => {
+                    return {
+                        url: `/community/${articleId}/comments/${commentId}/`,
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': axios.defaults.headers.common.Authorization,
+                        },
+                    }
+                },
+                invalidatesTags: (result, error, {articleId}) => {
+                    return [{ type: 'articles' }, { type: 'article', articleId }]
+                }
+            }),
             postLike: builder.mutation({
                 query: (articleId) => {
                     return {
@@ -106,5 +151,8 @@ export const {
     useFetchArticleQuery,
     useEditArticleMutation,
     useDeleteArticleMutation,
+    useCreateCommentMutation,
+    useEditCommentMutation,
+    useDeleteCommentMutation,
     usePostLikeMutation,
 } = communityApi;

@@ -10,14 +10,13 @@ function MutateLinks({
     articleId, 
     commentId, 
     handleEditClick, 
-    handleDeleteClick 
 }) {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <div className='MutateLinks'>
             {article && <Link to={`${editPath}/${articleId}/`}>수정</Link>}
-            {comment && <span onClick={() => handleEditClick(commentId)}>수정</span>}
+            {comment && <span onClick={handleEditClick}>수정</span>}
             &nbsp;|&nbsp;
             <span onClick={() => setShowModal(true)}>삭제</span>
             {showModal && 
@@ -25,11 +24,16 @@ function MutateLinks({
                     (article &&
                         <Form method='delete'>
                             <RemoveTextModal article handleModalClose={() => setShowModal(false)}/>
+                            <input type='hidden' name='target' value='article'/>
                         </Form>
                     )
                     ||
                     (comment && 
-                        <RemoveTextModal comment handleModalClose={() => setShowModal(false)} handleDeleteClick={() => handleDeleteClick(commentId)}/>
+                        <Form method='delete'>
+                            <RemoveTextModal comment handleModalClose={() => setShowModal(false)}/>
+                            <input type='hidden' name='target' value='comment'/>
+                            <input type='hidden' name='commentId' value={commentId} />
+                        </Form>
                     )
                 )
             }
@@ -56,12 +60,12 @@ MutateLinks.propTypes = {
         
         if (count < 3) return new Error('article일 땐, editPath와 articleId를 꼭 지정해야함')
     },
-    checkCommentCase: function({ comment, commentId, handleEditClick, handleDeleteClick }) {
+    checkCommentCase: function({ comment, commentId, handleEditClick }) {
         if (!comment) return
 
-        const count = Number(!!comment) + Number(!!commentId) + Number(!!handleEditClick) + Number(!!handleDeleteClick);
+        const count = Number(!!comment) + Number(!!commentId) + Number(!!handleEditClick);
         
-        if (count < 4) return new Error('comment일 땐, commentId와 handleEditClick와 handleDeleteClick를 꼭 지정해야함')
+        if (count < 3) return new Error('comment일 땐, commentId와 handleEditClick를 꼭 지정해야함')
     },
 };
 

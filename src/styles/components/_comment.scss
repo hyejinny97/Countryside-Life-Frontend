@@ -3,15 +3,18 @@
     grid-template-columns: 64px 1fr 80px;
     margin-bottom: 1rem;
 
+    & .WriterInfo {
+        margin-bottom: 0.3rem;
+    }
+
     &__content {
-        margin-top: 0.3rem;
         padding: 0.5rem 0.7rem;
         display: inline-block;
         background-color: $secondary-light;
         border-radius: 0.5rem;
     }
 
-    & .MutateLinks {
+    & .MutateLinks, &__text--editing {
         justify-self: end;
     }
 }

@@ -9,7 +9,7 @@ import {
     ArticleImageList, 
     ArticleCntList, 
     CommentForm,
-    Comment
+    CommentList,
 } from '@components/community';
 import { store, communityApi } from '@store';
 import { PATH_COMMUNITY } from '@constants';
@@ -21,21 +21,39 @@ async function loader({ params:{articleId} }) {
 }
 
 async function action({ request, params:{articleId} }) {
-    const formData = Object.fromEntries(await request.formData());
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
 
     if (request.method === 'DELETE') {
-        await store.dispatch(communityApi.endpoints.deleteArticle.initiate(articleId));
-        return redirect(PATH_COMMUNITY);
+        if (data.target === 'article') {
+            await store.dispatch(communityApi.endpoints.deleteArticle.initiate(articleId));
+            return redirect(PATH_COMMUNITY);
+        }
+        if (data.target === 'comment') {
+            await store.dispatch(communityApi.endpoints.deleteComment.initiate({articleId, commentId: data.commentId}));
+            
+            await new Promise(resolve => setTimeout(resolve, 100))
+            return null;
+        }
     } 
 
     if (request.method === 'POST') {
-        if (formData.hasOwnProperty('like')) {
+        if (data.hasOwnProperty('like')) {
             await store.dispatch(communityApi.endpoints.postLike.initiate(articleId));
             
             await new Promise(resolve => setTimeout(resolve, 100))
             return null;
         }
-        if (formData.hasOwnProperty('content')) {
+        if (data.hasOwnProperty('content') && data.state === 'create') {
+            await store.dispatch(communityApi.endpoints.createComment.initiate({formData, articleId}));
+            
+            await new Promise(resolve => setTimeout(resolve, 100))
+            return null;
+        }
+        if (data.hasOwnProperty('content') && data.state === 'edit') {
+            await store.dispatch(communityApi.endpoints.editComment.initiate({formData, articleId, commentId: data.commentId}));
+            
+            await new Promise(resolve => setTimeout(resolve, 100))
             return null;
         }
     }
@@ -80,10 +98,10 @@ function CommunityDetail() {
             <div className='CommunityDetail__foot'>
                 <div className='CommunityDetail__comment-input-wrap'>
                     <UserImage imageUrl={user.image} />
-                    <CommentForm disabled={authenticatedUser.id === -1} />
+                    <CommentForm disabled={authenticatedUser.id === -1} create />
                 </div>
                 <div className='CommunityDetail__comment-list'>
-                    {comments.map(comment => <Comment key={comment.id} data={comment} />)}
+                    <CommentList data={comments} />
                 </div>
             </div>
         </Page>
