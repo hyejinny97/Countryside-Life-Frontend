@@ -18,8 +18,11 @@ const communityApi = createApi({
                     };
                 },
                 providesTags: (result, error, params) => {
-                    // return [{ type: 'articles', category: params.category || '전체' }]
-                    return [{ type: 'articles' }]
+                    const tags = result?.results?.map(rst => {
+                        return { type: 'article', id: rst.id }
+                    });
+
+                    return tags || [{ type: 'article', id: 'NoData' }];
                 }
             }),
             fetchArticle: builder.query({
@@ -30,7 +33,7 @@ const communityApi = createApi({
                     };
                 },
                 providesTags: (result, error, articleId) => {
-                    return [{ type: 'article', articleId }]
+                    return [{ type: 'article', id: articleId }]
                 }
             }),
             createArticle: builder.mutation({
@@ -46,8 +49,7 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error) => {
-                    // return [{ type: 'articles', category: '전체' }, { type: 'articles', category: result.category }]
-                    return [{ type: 'articles' }]
+                    return [{ type: 'article', id: result.id }, { type: 'article', id: 'NoData' }]
                 }
             }),
             editArticle: builder.mutation({
@@ -63,7 +65,7 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error, {articleId}) => {
-                    return [{ type: 'articles' }, { type: 'article', articleId }]
+                    return [{ type: 'article', id: articleId }]
                 }
             }),
             deleteArticle: builder.mutation({
@@ -77,7 +79,7 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error, articleId) => {
-                    return [{ type: 'articles' }]
+                    return [{ type: 'article', id: articleId }]
                 }
             }),
             createComment: builder.mutation({
@@ -93,7 +95,7 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error, {articleId}) => {
-                    return [{ type: 'articles' }, { type: 'article', articleId }]
+                    return [{ type: 'article', id: articleId }]
                 }
             }),
             editComment: builder.mutation({
@@ -109,7 +111,7 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error, {articleId}) => {
-                    return [{ type: 'article', articleId }]
+                    return [{ type: 'article', id: articleId }]
                 }
             }),
             deleteComment: builder.mutation({
@@ -123,7 +125,7 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error, {articleId}) => {
-                    return [{ type: 'articles' }, { type: 'article', articleId }]
+                    return [{ type: 'article', id: articleId }]
                 }
             }),
             postLike: builder.mutation({
@@ -137,7 +139,7 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error, articleId) => {
-                    return [{type: 'articles'}, { type: 'article', articleId }]
+                    return [{ type: 'article', id: articleId }]
                 }
             }),
         }
