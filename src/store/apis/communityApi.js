@@ -20,9 +20,13 @@ const communityApi = createApi({
                 providesTags: (result, error, params) => {
                     const tags = result?.results?.map(rst => {
                         return { type: 'article', id: rst.id }
-                    });
-
-                    return tags || [{ type: 'article', id: 'NoData' }];
+                    }) || [{ type: 'article', id: 'NoData' }];
+                    
+                    if (params.category) tags.push({ type: 'category', id: params.category });
+                    else if (params.search) tags.push({ type: 'search' });
+                    else tags.push({ type: 'category', id: '전체' });
+                    
+                    return tags;
                 }
             }),
             fetchArticle: builder.query({
@@ -49,7 +53,13 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error) => {
-                    return [{ type: 'article', id: result.id }, { type: 'article', id: 'NoData' }]
+                    return [
+                        { type: 'category', id: '전체' }, 
+                        { type: 'category', id: result.category },
+                        { type: 'search' }, 
+                        { type: 'article', id: 'NoData' }, 
+                        { type: 'userArticle' }
+                    ]
                 }
             }),
             editArticle: builder.mutation({
@@ -95,7 +105,10 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error, {articleId}) => {
-                    return [{ type: 'article', id: articleId }]
+                    return [
+                        { type: 'article', id: articleId }, 
+                        { type: 'userComment' }
+                    ]
                 }
             }),
             editComment: builder.mutation({
@@ -139,7 +152,74 @@ const communityApi = createApi({
                     }
                 },
                 invalidatesTags: (result, error, articleId) => {
-                    return [{ type: 'article', id: articleId }]
+                    return [{ type: 'article', id: articleId }, { type: 'userLike' }]
+                }
+            }),
+            fetchUserArticles: builder.query({
+                query: ({accessToken, page=1}) => {
+                    return {
+                        url: '/community/user',
+                        method: 'GET',
+                        headers: {
+                            // 'Authorization': axios.defaults.headers.common.Authorization,
+                            'Authorization': accessToken,
+                        },
+                        params: {
+                            page
+                        },
+                    }
+                },
+                providesTags: (result, error) => {
+                    const tags = result?.results?.map(rst => {
+                        return { type: 'article', id: rst.id }
+                    }) || [{ type: 'article', id: 'NoData' }];
+                    tags.push({ type: 'userArticle' })
+
+                    return tags;
+                }
+            }),
+            fetchUserComments: builder.query({
+                query: ({accessToken, page=1}) => {
+                    return {
+                        url: '/community/comments/user',
+                        method: 'GET',
+                        headers: {
+                            'Authorization': accessToken,
+                        },
+                        params: {
+                            page
+                        },
+                    }
+                },
+                providesTags: (result, error) => {
+                    const tags = result?.results?.map(rst => {
+                        return { type: 'article', id: rst.id }
+                    }) || [{ type: 'article', id: 'NoData' }];
+                    tags.push({ type: 'userComment' })
+
+                    return tags;
+                }
+            }),
+            fetchUserLikes: builder.query({
+                query: ({accessToken, page=1}) => {
+                    return {
+                        url: '/community/likes/user',
+                        method: 'GET',
+                        headers: {
+                            'Authorization': accessToken,
+                        },
+                        params: {
+                            page
+                        },
+                    }
+                },
+                providesTags: (result, error) => {
+                    const tags = result?.results?.map(rst => {
+                        return { type: 'article', id: rst.id }
+                    }) || [{ type: 'article', id: 'NoData' }];
+                    tags.push({ type: 'userLike' })
+
+                    return tags;
                 }
             }),
         }
@@ -157,4 +237,7 @@ export const {
     useEditCommentMutation,
     useDeleteCommentMutation,
     usePostLikeMutation,
+    useFetchUserArticlesQuery,
+    useFetchUserCommentsQuery,
+    useFetchUserLikesQuery,
 } = communityApi;

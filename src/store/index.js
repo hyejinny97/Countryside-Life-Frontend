@@ -31,4 +31,7 @@ export {
     useEditCommentMutation,
     useDeleteCommentMutation,
     usePostLikeMutation,
+    useFetchUserArticlesQuery,
+    useFetchUserCommentsQuery,
+    useFetchUserLikesQuery,
 } from '@store/apis/communityApi';
