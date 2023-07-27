@@ -19,12 +19,17 @@ function Input({
     className, 
     clear,
     disabled, 
+    newValue
 }) {    
     const [value, setValue] = useState(initialValue || '');
     
     useEffect(() => {
         if (clear) setValue('');
     }, [clear])
+
+    useEffect(() => {
+        if (newValue) setValue(newValue);
+    }, [newValue])
 
     const inputClassName = classname('Input__input', {
         'Input__input--red': invalidTexts && invalidTexts.length >= 1 && (!left || !right),

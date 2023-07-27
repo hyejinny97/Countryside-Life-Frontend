@@ -4,8 +4,8 @@ import { Link, redirect, useLoaderData } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 import { IoChatbubblesOutline } from "react-icons/io5";
 import { AiOutlineHeart } from "react-icons/ai";
-import { Button, Line, Page, Pagination } from '@components/ui';
-import { CommunityArticleList } from '@components/community';
+import { Button, Line, Page } from '@components/ui';
+import { CommunityArticleList, ArticlePagination } from '@components/community';
 import { PATH_EDITPROFILE, PATH_LOGIN, PATH_MYPAGE } from '@constants';
 import { silentRefresh } from '@helpers';
 import { communityApi, store } from '@store';
@@ -96,7 +96,7 @@ function MyPage() {
                 </div>
                 <Line secondaryLight />
                 <CommunityArticleList data={data.results}/>
-                <Pagination dataCnt={data.count} />
+                <ArticlePagination dataCnt={data.count} />
             </div> 
         </Page>
     );

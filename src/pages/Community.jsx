@@ -1,8 +1,8 @@
 import { Link, useLoaderData, useNavigation } from 'react-router-dom';
 import { BsPencil } from "react-icons/bs";
 import { HiOutlineDocumentText } from "react-icons/hi";
-import { Category, SearchForm, OrderList, RegionDropdown, CommunityArticleList } from '@components/community';
-import { Page, Spinner, ErrorBox, EmptyBox, Pagination } from '@components/ui';
+import { Category, SearchForm, OrderList, RegionDropdown, CommunityArticleList, ArticlePagination } from '@components/community';
+import { Page, Spinner, ErrorBox, EmptyBox } from '@components/ui';
 import { PATH_CREATECOMMUNITY } from '@constants';
 import { paramsToObject } from '@helpers';
 import { store, communityApi, useFetchAllArticlesQuery } from '@store';
@@ -37,7 +37,7 @@ function Community() {
                         <EmptyBox message='게시글이 없습니다.' icon={<HiOutlineDocumentText />} />
                     )}
                     {error && <ErrorBox message='게시글을 불러올 수 없습니다.' icon={<HiOutlineDocumentText />}/>}
-                    {articleData && <Pagination dataCnt={articleData.count} />}
+                    {articleData && <ArticlePagination dataCnt={articleData.count} />}
                 </div>
             </div>
             <Link className='Community__write-button' title='게시글 작성하기' to={PATH_CREATECOMMUNITY}>

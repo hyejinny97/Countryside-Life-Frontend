@@ -10,6 +10,7 @@ const PATH_COMMUNITY = '/community';
 const PATH_CREATECOMMUNITY = '/community/create';
 const PATH_COMMUNITYDETAIL = '/community/:articleId';
 const PATH_EDITCOMMUNITY = '/community/edit/:articleId';
+const PATH_LOCATION = '/location';
 
 // JWT
 const JWT_EXPIRRY_TIME = 60 * 60 * 1000;  // 단위: ms
@@ -53,6 +54,7 @@ const REGION_CHUNGBUK = '충청북도';
 
 // 페이지당 데이터 최대 개수
 const PAGE_SIZE = 10;
+const ADDRESS_PAGE_SIZE = 5;
 
 export { 
     PATH_ROOT, 
@@ -66,6 +68,7 @@ export {
     PATH_CREATECOMMUNITY,
     PATH_COMMUNITYDETAIL,
     PATH_EDITCOMMUNITY,
+    PATH_LOCATION,
     JWT_EXPIRRY_TIME, 
     ORDER_CREATED_AT,
     ORDER_LIKES,
@@ -99,4 +102,5 @@ export {
     REGION_CHUNGNAM, 
     REGION_CHUNGBUK,
     PAGE_SIZE,
+    ADDRESS_PAGE_SIZE,
 }
