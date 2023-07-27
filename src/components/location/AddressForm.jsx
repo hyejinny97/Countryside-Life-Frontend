@@ -6,10 +6,10 @@ import { AddressModal } from '@components/location';
 
 function AddressForm() {
     const [showModal, setShowModal] = useState(false);
-    const {data, error} = useLoaderData();
+    const {addressData, error} = useLoaderData();
 
-    const addressName = data?.documents[0].address?.address_name;
-    // const roadAddressName = data?.documents[0].road_address?.address_name;
+    const addressName = addressData?.documents[0].address?.address_name;
+    // const roadAddressName = addressData?.documents[0].road_address?.address_name;
     // const value = `${addressName} ${roadAddressName ? `(${roadAddressName})` : ''}`
 
     const handleButtonClick = (e) => {

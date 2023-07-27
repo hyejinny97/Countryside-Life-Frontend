@@ -8,7 +8,7 @@ function AddressModal({ handleModalClose }) {
     const [curAddress, setCurAddress] = useState('');
 
     let data;
-    if (fetcher.data) data = fetcher.data.data;
+    if (fetcher.data) data = fetcher.data.coordData;
 
     const addressInputProps = {
         type: 'text', 
