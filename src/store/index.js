@@ -3,15 +3,19 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import { userReducer } from '@store/slices/userSlice';
 import { toastReducer } from '@store/slices/toastSlice';
 import { communityApi } from '@store/apis/communityApi';
+import { locationApi } from '@store/apis/locationApi';
 
 const store = configureStore({
     reducer: {
         user: userReducer,
         toast: toastReducer,
         [communityApi.reducerPath]: communityApi.reducer,
+        [locationApi.reducerPath]: locationApi.reducer,
     },
     middleware: (getDefaultMiddleware) => {
-        return getDefaultMiddleware().concat(communityApi.middleware);
+        return getDefaultMiddleware()
+                .concat(communityApi.middleware)
+                .concat(locationApi.middleware);
     }
 });
 
@@ -35,3 +39,8 @@ export {
     useFetchUserCommentsQuery,
     useFetchUserLikesQuery,
 } from '@store/apis/communityApi';
+export { 
+    locationApi, 
+    useGetCoordFromAddQuery,
+    useGetAddFromCoordQuery,
+} from '@store/apis/locationApi';

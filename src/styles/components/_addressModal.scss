@@ -1,0 +1,30 @@
+.AddressModal {
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    &__input-form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        & .Input {
+            margin-right: 0.5rem;
+            width: 100%;
+        }
+
+        & button {
+            width: 4rem;
+        }
+    }
+
+    & .Line {
+        margin: 0.5rem 0;
+    }
+
+    & .AddressList {
+        margin-bottom: 1rem;
+        min-height: 5rem;
+    }
+}

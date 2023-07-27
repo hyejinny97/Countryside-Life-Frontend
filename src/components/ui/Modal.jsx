@@ -5,7 +5,8 @@ import { IoMdClose } from "react-icons/io";
 function Modal({ 
     closeIcon=<IoMdClose />, 
     children, 
-    handleModalClose 
+    handleModalClose,
+    className,
 }) {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
@@ -13,7 +14,7 @@ function Modal({
     }, [])
 
     return (
-        <div className='Modal'>
+        <div className={`Modal ${className || ''}`}>
             <div className='Modal__overlay' onClick={handleModalClose}></div>
             <div className='Modal__container'>
                 <div className='Modal__icon-close' onClick={handleModalClose}>

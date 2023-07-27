@@ -1,0 +1,15 @@
+.AddressForm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+
+    &__input {
+        margin-right: 1rem;
+        width: 100%;
+    }
+
+    & button {
+        width: 7rem;
+    }
+}

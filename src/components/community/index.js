@@ -19,3 +19,4 @@ export { default as CommentForm } from './CommentForm';
 export { default as Comment } from './Comment';
 export { default as CommentList } from './CommentList';
 export { default as TitleInput } from './TitleInput';
+export { default as ArticlePagination } from './ArticlePagination';

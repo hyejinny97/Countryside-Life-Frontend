@@ -1,0 +1,17 @@
+.CurrentLocation {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 1rem;
+
+    & .Badge {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 9rem;
+        cursor: pointer;
+
+        @media screen and (min-width: $md) {
+            width: 10rem;
+        }
+    } 
+}

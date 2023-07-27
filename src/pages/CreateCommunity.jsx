@@ -44,17 +44,27 @@ async function editLoader({params:{articleId}}) {
 }
 
 async function createAction({ request }) {
-    const formData = await request.formData();
-    
-    const res = await store.dispatch(communityApi.endpoints.createArticle.initiate(formData));
-    return res.error ? res.error.data : redirect(PATH_COMMUNITY);
+    try {
+        const formData = await request.formData();
+        const res = await store.dispatch(communityApi.endpoints.createArticle.initiate(formData));
+        
+        if (res.error) throw Error(res.error.message);
+        return redirect(PATH_COMMUNITY);
+    } catch (e) {
+        return e;
+    }
 }
 
 async function editAction({ request, params:{articleId} }) {
-    const formData = await request.formData();
-    
-    const res = await store.dispatch(communityApi.endpoints.editArticle.initiate({formData, articleId}));
-    return res.error ? res.error.data : redirect(`${PATH_COMMUNITY}/${articleId}`);
+    try {
+        const formData = await request.formData();
+        const res = await store.dispatch(communityApi.endpoints.editArticle.initiate({formData, articleId}));
+        
+        if (res.error) throw Error(res.error.message);
+        return redirect(`${PATH_COMMUNITY}/${articleId}`);
+    } catch (e) {
+        return e;
+    }
 }
 
 function CreateCommunity() {
