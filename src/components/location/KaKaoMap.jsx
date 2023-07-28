@@ -1,7 +1,14 @@
 import { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import marker_icon from '@assets/marker_icon.png';
-import { displayMap, markingByCoord, displayOverlay, markingByCategory, controlMapType } from '@helpers';
+import { 
+    displayMap, 
+    markingByCoord, 
+    displayOverlay, 
+    markingByCategory, 
+    controlMapType,
+    displayRoadView,
+} from '@helpers';
 
 function KaKaoMap() {
     const { addressData, latitude, longitude, error } = useLoaderData();
@@ -17,7 +24,7 @@ function KaKaoMap() {
     useEffect(() => {
         // 지도 생성하기
         const container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-        const map = displayMap({container, latitude, longitude})
+        const { map, mapCenter } = displayMap({container, latitude, longitude})
         
         // 카테고리별 장소 검색하기
         markingByCategory({map});
@@ -33,10 +40,13 @@ function KaKaoMap() {
     
         // 지도 타입 변경 (지도/스카이뷰)
         controlMapType({map});
+
+        // 로드뷰 변경
+        displayRoadView({map, mapCenter})
     }, [latitude, longitude])
 
     return (
-        <div className="map_wrap">
+        <div id="container">
             <ul id="category">
                 <li id="BK9" data-order="0"> 
                     <span className="category_bg bank"></span>
@@ -63,10 +73,17 @@ function KaKaoMap() {
                     편의점
                 </li>      
             </ul>
-            <div id="map" style={{width: '100%', height: '400px'}}></div>
             <div className="custom_typecontrol radius_border"> {/* 지도타입 컨트롤 div 입니다 */}
                 <span id="btnRoadmap" className="selected_btn">지도</span>
                 <span id="btnSkyview" className="btn">스카이뷰</span>
+            </div>
+            <div className="map_wrap">
+                <div id="map" style={{width: '100%', height: '400px'}}></div>
+                <div id="roadviewControl"></div> {/* 로드뷰 컨트롤러 */}
+            </div>
+            <div id="rvWrapper">
+                <div id="roadview" style={{width: '100%', height: '100%'}}></div> {/* 로드뷰를 표시할 div 입니다 */}
+                <div id="close" title="로드뷰닫기"><span className="img"></span></div>
             </div>
         </div>
     );
