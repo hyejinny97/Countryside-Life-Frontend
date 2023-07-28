@@ -85,13 +85,17 @@
     }  
     
     &__info {
-        width: 198px;
+        width: 286px;
         height: calc(6rem - 12px);
         border-radius: 5px;
         border-bottom: 2px solid #ccc;
         border-right: 1px solid #ccc;
         overflow: hidden;
         background: #fff;
+
+        @media screen and (max-width: $sm) {
+            width: 198px;
+        }
 
         &:nth-child(1) {
             border: 0;

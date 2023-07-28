@@ -17,4 +17,19 @@
         margin-right: 0.5rem;
         width: 3rem;
     }
+
+    @media screen and (max-width: $sm) {
+        font-size: 0.8rem;
+
+        &__road-address {
+            font-size: 0.7rem;
+            color: $secondary;
+        }
+
+        & .Button {
+            margin-right: 0;
+            width: 2rem;
+            font-size: 0.7rem;
+        }
+    }
 }

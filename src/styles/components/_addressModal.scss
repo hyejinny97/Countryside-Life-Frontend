@@ -17,6 +17,14 @@
         & button {
             width: 4rem;
         }
+
+        @media screen and (max-width: $sm) {
+            display: block;
+
+            & button {
+                width: 100%;
+            }
+        }
     }
 
     & .Line {
