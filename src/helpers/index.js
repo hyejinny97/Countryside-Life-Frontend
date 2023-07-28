@@ -4,5 +4,7 @@ export {
     displayMap, 
     markingByCoord, 
     displayOverlay, 
-    markingByCategory
+    markingByCategory,
+    controlMapType,
+    displayRoadView,
 } from '@helpers/kakaoMap';
