@@ -304,4 +304,24 @@ function markingByCategory({ map }) {
     } 
 }
 
-export {displayMap, markingByCoord, displayOverlay, markingByCategory};
+function controlMapType({ map }) {
+    const roadmapControl = document.getElementById('btnRoadmap');
+    const skyviewControl = document.getElementById('btnSkyview'); 
+
+    roadmapControl.onclick = () => setMapType('roadmap');
+    skyviewControl.onclick = () => setMapType('skyview');
+
+    function setMapType(maptype) {
+        if (maptype === 'roadmap') {
+            map.setMapTypeId(kakao.maps.MapTypeId.ROADMAP);    
+            roadmapControl.className = 'selected_btn';
+            skyviewControl.className = 'btn';
+        } else {
+            map.setMapTypeId(kakao.maps.MapTypeId.HYBRID);    
+            skyviewControl.className = 'selected_btn';
+            roadmapControl.className = 'btn';
+        }
+    }
+}
+
+export {displayMap, markingByCoord, displayOverlay, markingByCategory, controlMapType};

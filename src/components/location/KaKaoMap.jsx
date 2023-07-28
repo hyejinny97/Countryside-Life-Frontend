@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import marker_icon from '@assets/marker_icon.png';
-import { displayMap, markingByCoord, displayOverlay, markingByCategory } from '@helpers';
+import { displayMap, markingByCoord, displayOverlay, markingByCategory, controlMapType } from '@helpers';
 
 function KaKaoMap() {
     const { addressData, latitude, longitude, error } = useLoaderData();
@@ -30,6 +30,9 @@ function KaKaoMap() {
     
         // 오버레이 생성하기
         displayOverlay({map, marker, title: '선택한 위치', address: address?.address_name, roadAddress: road_address?.address_name});
+    
+        // 지도 타입 변경 (지도/스카이뷰)
+        controlMapType({map});
     }, [latitude, longitude])
 
     return (
@@ -61,6 +64,10 @@ function KaKaoMap() {
                 </li>      
             </ul>
             <div id="map" style={{width: '100%', height: '400px'}}></div>
+            <div className="custom_typecontrol radius_border"> {/* 지도타입 컨트롤 div 입니다 */}
+                <span id="btnRoadmap" className="selected_btn">지도</span>
+                <span id="btnSkyview" className="btn">스카이뷰</span>
+            </div>
         </div>
     );
 }
