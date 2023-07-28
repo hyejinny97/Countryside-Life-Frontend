@@ -1,3 +1,8 @@
 export {processAccessToken, processRefreshToken, silentRefresh, blacklistRefresh} from '@helpers/jwt';
 export {paramsToObject} from '@helpers/paramsToObject';
-export {displayMap, markingFromCoord} from '@helpers/kakaoMap';
+export {
+    displayMap, 
+    markingByCoord, 
+    displayOverlay, 
+    markingByCategory
+} from '@helpers/kakaoMap';
