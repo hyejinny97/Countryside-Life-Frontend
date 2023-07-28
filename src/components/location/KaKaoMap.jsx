@@ -19,8 +19,6 @@ function KaKaoMap() {
         road_address = addressData.documents[0].road_address;
     };
 
-    console.log(addressData, latitude, longitude, address, road_address)
-
     useEffect(() => {
         // 지도 생성하기
         const container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -28,6 +26,12 @@ function KaKaoMap() {
         
         // 카테고리별 장소 검색하기
         markingByCategory({map});
+
+        // 지도 타입 변경 (지도/스카이뷰)
+        controlMapType({map});
+
+        // 로드뷰 변경
+        displayRoadView({map, mapCenter});
 
         if (!addressData) return
 
@@ -37,12 +41,6 @@ function KaKaoMap() {
     
         // 오버레이 생성하기
         displayOverlay({map, marker, title: '선택한 위치', address: address?.address_name, roadAddress: road_address?.address_name});
-    
-        // 지도 타입 변경 (지도/스카이뷰)
-        controlMapType({map});
-
-        // 로드뷰 변경
-        displayRoadView({map, mapCenter})
     }, [latitude, longitude])
 
     return (
