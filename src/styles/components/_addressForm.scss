@@ -12,4 +12,14 @@
     & button {
         width: 7rem;
     }
+
+    @media screen and (max-width: $sm) {
+        display: block;
+        margin-bottom: 9rem;
+    
+        & button {
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+    }
 }

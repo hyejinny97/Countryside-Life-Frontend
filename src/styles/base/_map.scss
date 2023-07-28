@@ -2,17 +2,23 @@
 #container {
     // height:300px;
     position:relative;
+
+    &.view_roadview {
+        & #rvWrapper {
+            width:50%;
+            height:100%;
+            top:0;
+            right:0;
+            position:absolute;
+            z-index:0;
+        }
+
+        .map_wrap {
+            width: 50%;
+        }
+    }
 }
 
-#container.view_roadview #rvWrapper {
-    width:50%;
-    height:100%;
-    top:0;
-    right:0;
-    position:absolute;
-    z-index:0;
-}
-#container.view_roadview .map_wrap {width: 50%;}
 #roadviewControl {
     position:absolute;
     top:5px;
@@ -22,10 +28,34 @@
     z-index: 1;
     cursor: pointer; 
     background: url(https://t1.daumcdn.net/localimg/localimages/07/2018/pc/common/img_search.png) 0 -450px no-repeat;
+
+    &.active {
+        background-position:0 -350px;
+    }
+
+    @media screen and (max-width: $sm) {
+        display: none;
+    }
 }
-#roadviewControl.active {background-position:0 -350px;}
-#close {position: absolute;padding: 4px;top: 5px;left: 5px;cursor: pointer;background: #fff;border-radius: 4px;border: 1px solid #c8c8c8;box-shadow: 0px 1px #888;}
-#close .img {display: block;background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/rv_close.png) no-repeat;width: 14px;height: 14px;}
+
+#close {
+    position: absolute;
+    padding: 4px;
+    top: 5px;
+    left: 5px;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #c8c8c8;
+    box-shadow: 0px 1px #888;
+
+    & .img {
+        display: block;
+        background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/rv_close.png) no-repeat;
+        width: 14px;
+        height: 14px;
+    }
+}
 
 .map_wrap {
     position:relative;
@@ -47,10 +77,15 @@
         // font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
         line-height: 1.5;
         z-index: 10;
+
+        @media screen and (max-width: $sm) {
+            width: 200px;
+            margin-left: -100px;
+        }
     }  
     
     &__info {
-        width: 286px;
+        width: 198px;
         height: calc(6rem - 12px);
         border-radius: 5px;
         border-bottom: 2px solid #ccc;
@@ -137,6 +172,10 @@
     overflow: hidden;
     z-index: 2;
 
+    @media screen and (max-width: $sm) {
+        top:-7rem;
+    }
+
     & li {
         float:left;
         list-style: none;
@@ -145,6 +184,13 @@
         padding:6px 0;
         text-align: center; 
         cursor: pointer;
+
+        @media screen and (max-width: $sm) {
+            padding:3px 0;
+            width:35px;
+            font-size: 0.7rem;
+            letter-spacing: -1px;
+        }
 
         &.on {
             background: #eee;
@@ -291,6 +337,10 @@
     z-index:1;
     font-size:12px;
     // font-family:'Malgun Gothic', '맑은 고딕', sans-serif;
+
+    @media screen and (max-width: $sm) {
+        left: 0;
+    }
 
     & span {
         display:block;
