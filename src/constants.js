@@ -11,6 +11,7 @@ const PATH_CREATECOMMUNITY = '/community/create';
 const PATH_COMMUNITYDETAIL = '/community/:articleId';
 const PATH_EDITCOMMUNITY = '/community/edit/:articleId';
 const PATH_LOCATION = '/location';
+const PATH_INTRODUCTION = '/introduction';
 
 // JWT
 const JWT_EXPIRRY_TIME = 60 * 60 * 1000;  // 단위: ms
@@ -69,6 +70,7 @@ export {
     PATH_COMMUNITYDETAIL,
     PATH_EDITCOMMUNITY,
     PATH_LOCATION,
+    PATH_INTRODUCTION,
     JWT_EXPIRRY_TIME, 
     ORDER_CREATED_AT,
     ORDER_LIKES,

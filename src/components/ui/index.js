@@ -14,3 +14,5 @@ export { default as  Textarea } from './Textarea';
 export { default as  EmptyBox } from './EmptyBox';
 export { default as  ErrorBox } from './ErrorBox';
 export { default as  Pagination } from './Pagination';
+export { default as  Slider } from './Slider';
+export { default as  AutoPlaySlider } from './AutoPlaySlider';
