@@ -12,3 +12,5 @@ export { default as icon_view } from '@assets/icon_view.png';
 
 export { default as logo } from '@assets/logo.png';
 export { default as logo_gray } from '@assets/logo_gray.png';
+
+export { default as marker_icon } from '@assets/marker_icon.png';

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import marker_icon from '@assets/marker_icon.png';
+import { marker_icon } from '@assets';
 import { 
     displayMap, 
     markingByCoord, 

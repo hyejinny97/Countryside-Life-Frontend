@@ -1,5 +1,12 @@
+import { IoIosArrowDropright, IoIosArrowDropleft } from "react-icons/io";
+
 function Pagination({ dataCnt=0, pageSize, currentPage, onClick }) {
     const pageCnt = Math.ceil(dataCnt / pageSize);
+    const pagesPerView = 5;
+    
+    const firstView = Math.floor((currentPage - 1) / pagesPerView) === 0;
+    const lastView = Math.floor((currentPage - 1) / pagesPerView) === Math.floor((pageCnt - 1) / pagesPerView);
+    const currentView = Math.floor((currentPage - 1) / pagesPerView);
 
     const renderPages = Array(pageCnt).fill(0).map((_, idx) => {
         return (
@@ -15,7 +22,15 @@ function Pagination({ dataCnt=0, pageSize, currentPage, onClick }) {
 
     return (
         <div className='Pagination'>
-            {pageCnt > 1 && renderPages}
+            {pageCnt >= pagesPerView 
+                && !firstView
+                && <IoIosArrowDropleft onClick={() => onClick(pagesPerView * currentView)} />
+            }
+            {pageCnt > 1 && renderPages.slice(pagesPerView * currentView, pagesPerView * (currentView + 1))}
+            {pageCnt >= pagesPerView 
+                && !lastView
+                && <IoIosArrowDropright onClick={() => onClick(pagesPerView * (currentView + 1) + 1)} />
+            }
         </div>
     );
 }
