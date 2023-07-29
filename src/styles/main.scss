@@ -19,6 +19,7 @@
 @import 'components/emptyBox';
 @import 'components/errorBox';
 @import 'components/pagination';
+@import 'components/slider';
 
 @import 'components/accountBox';
 @import 'components/imagefile-input';
@@ -44,6 +45,7 @@
 @import 'components/addressModal';
 @import 'components/addressItem';
 @import 'components/currentLocation';
+@import 'components/introSlider';
 
 @import 'layout/navbar';
 @import 'layout/subnavbar';
@@ -58,3 +60,4 @@
 @import 'pages/community';
 @import 'pages/createCommunity';
 @import 'pages/communityDetail';
+@import 'pages/introduction';

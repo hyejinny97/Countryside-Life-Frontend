@@ -8,3 +8,4 @@ export {
     controlMapType,
     displayRoadView,
 } from '@helpers/kakaoMap';
+export {nextSlideIdx, prevSlideIdx} from '@helpers/slider';

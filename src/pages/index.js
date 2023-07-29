@@ -8,6 +8,7 @@ export { default as Community } from './Community';
 export { default as CreateCommunity } from './CreateCommunity';
 export { default as CommunityDetail } from './CommunityDetail';
 export { default as Location } from './Location';
+export { default as Introduction } from './Introduction';
 
 export { action as signupAction } from './Signup';
 export { action as editProfileAction } from './EditProfile';

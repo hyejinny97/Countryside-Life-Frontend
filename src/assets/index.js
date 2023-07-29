@@ -14,3 +14,10 @@ export { default as logo } from '@assets/logo.png';
 export { default as logo_gray } from '@assets/logo_gray.png';
 
 export { default as marker_icon } from '@assets/marker_icon.png';
+
+export { default as slide_apple } from '@assets/apple_slide.jpg';
+export { default as slide_house } from '@assets/house_slide.jpg';
+export { default as slide_countryside } from '@assets/countryside_slide.jpg';
+
+export { default as font_eljiro } from '@assets/BMEULJIRO.otf';
+export { default as font_eljiroLater } from '@assets/BMEuljiro10yearslaterOTF.otf';
