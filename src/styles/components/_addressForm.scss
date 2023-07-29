@@ -12,4 +12,20 @@
     & button {
         width: 7rem;
     }
+
+    @media screen and (max-width: $sm) {
+        display: block;
+        margin-bottom: 9rem;
+    
+        &__input input {
+            font-size: 0.75rem;
+            letter-spacing: -1px;
+            word-spacing: -1px;
+        }
+
+        & button {
+            margin-top: 0.5rem;
+            width: 100%;
+        }
+    }
 }

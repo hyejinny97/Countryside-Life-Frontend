@@ -13,9 +13,7 @@ function CurrentLocation() {
             submit({ latitude, longitude }, { method: 'GET' });
         }
 
-        const fail = (e) => {
-            alert(`현 위치를 찾을 수 없습니다.\n${e.message}`)
-        };
+        const fail = (e) => alert(`현 위치를 찾을 수 없습니다.`);
 
         navigator.geolocation.getCurrentPosition(success, fail)
     }
