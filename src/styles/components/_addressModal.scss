@@ -1,4 +1,12 @@
 .AddressModal {
+    & .Modal__container {
+        min-width: 350px;
+
+        @media screen and (max-width: $sm) {
+            min-width: 300px;
+        }
+    }
+
     &__title {
         margin-bottom: 1rem;
     }
