@@ -52,16 +52,6 @@
             height: 1.2rem;
         }
 
-        &--active {
-            border-radius: 0.5rem;
-            background-color: $primary-dark;
-            color: white;
-
-            &:visited {
-                color: white;
-            }
-        }
-
         &--vertical {
             margin-bottom: 0.5rem;
             padding: 0.5rem 1rem;
@@ -69,6 +59,11 @@
 
             & img {
                 margin-right: 0.5rem;
+            }
+
+            &:hover {
+                border-radius: 0.5rem;
+                background-color: $secondary-light;
             }
         }
 
@@ -78,6 +73,26 @@
             padding: 0.5rem;
             border: 1px solid $primary-dark;
             border-radius: 0.5rem;
+
+            &:hover {
+                border-radius: 0.5rem;
+                background-color: $secondary-light;
+            }
+        }
+
+        &--active {
+            border-radius: 0.5rem;
+            background-color: $primary-dark;
+            color: white;
+
+            &:visited {
+                color: white;
+            }
+
+            &:hover {
+                border-radius: 0.5rem;
+                background-color: $primary-dark;
+            }
         }
     }
 }

@@ -32,7 +32,7 @@ function CommunityArticleItem({ data }) {
             </div>
             <div className='CommunityArticleItem__body'>
                 <Link className='CommunityArticleItem__title' to={`${PATH_COMMUNITY}/${articleId}`}>{title}</Link>
-                <Link className='CommunityArticleItem__content' to='/'>{content}</Link>
+                <Link className='CommunityArticleItem__content' to={`${PATH_COMMUNITY}/${articleId}`}>{content}</Link>
                 <ArticleImageList data={article_images} />
             </div>
             <div className='CommunityArticleItem__foot'>
