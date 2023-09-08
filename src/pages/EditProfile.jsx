@@ -14,7 +14,7 @@ async function action({ request }) {
   if (request.method === "PUT") {
     const data = Object.fromEntries(await request.formData());
 
-    if (!data.image.name) delete data.image;
+    if (!data.image?.name) delete data.image;
 
     try {
       const response = await updateUserInfoAxios(data);
