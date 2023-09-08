@@ -121,7 +121,7 @@ function CommunityDetail() {
       <Line secondaryLight />
       <div className="CommunityDetail__body">
         <p className="CommunityDetail__content">{content}</p>
-        <ArticleImageList data={article_images} />
+        {/* <ArticleImageList data={article_images} /> */}
         <ArticleCntList
           likesCnt={like_users.length}
           commentsCnt={comments.length}
