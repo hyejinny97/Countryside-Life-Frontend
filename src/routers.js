@@ -1,21 +1,40 @@
-import axios from 'axios';
-import Cookies from 'universal-cookie';
+import axios from "axios";
+import Cookies from "universal-cookie";
+import { createBrowserRouter, redirect } from "react-router-dom";
 import {
-    createBrowserRouter,
-    redirect
-  } from "react-router-dom";
-import { 
-  Root, Login, Signup, EditProfile, ChangePassword, MyPage, Community, CreateCommunity, CommunityDetail, Location, Introduction,
-  signupAction, editProfileAction, changePasswordAction, loginAction, communityDetailAction, createCommunityAction, editCommunityAction, locationAction,
-  rootLoader, requireAuthLoader, communityLoader, createCommunityLoader, communityDetailLoader, editCommunityLoader, locationLoader,
-} from '@pages';
-import { 
-  PATH_ROOT, 
-  PATH_LOGIN, 
-  PATH_LOGOUT, 
-  PATH_SIGNUP, 
-  PATH_EDITPROFILE, 
-  PATH_CHANGEPASSWORD, 
+  Root,
+  Login,
+  Signup,
+  EditProfile,
+  ChangePassword,
+  MyPage,
+  Community,
+  CreateCommunity,
+  CommunityDetail,
+  Location,
+  Introduction,
+  signupAction,
+  editProfileAction,
+  changePasswordAction,
+  loginAction,
+  communityDetailAction,
+  createCommunityAction,
+  editCommunityAction,
+  locationAction,
+  rootLoader,
+  requireAuthLoader,
+  communityLoader,
+  createCommunityLoader,
+  editCommunityLoader,
+  locationLoader,
+} from "@pages";
+import {
+  PATH_ROOT,
+  PATH_LOGIN,
+  PATH_LOGOUT,
+  PATH_SIGNUP,
+  PATH_EDITPROFILE,
+  PATH_CHANGEPASSWORD,
   PATH_MYPAGE,
   PATH_COMMUNITY,
   PATH_CREATECOMMUNITY,
@@ -23,9 +42,9 @@ import {
   PATH_EDITCOMMUNITY,
   PATH_LOCATION,
   PATH_INTRODUCTION,
-} from '@constants';
-import { blacklistRefresh } from '@helpers';
-import { resetUserInfo, store } from '@store';
+} from "@constants";
+import { blacklistRefresh } from "@helpers";
+import { resetUserInfo, store } from "@store";
 
 const router = createBrowserRouter([
   {
@@ -46,10 +65,10 @@ const router = createBrowserRouter([
         path: PATH_LOGOUT,
         loader: async () => {
           await blacklistRefresh();
-          axios.defaults.headers.common['Authorization'] = '';
+          axios.defaults.headers.common["Authorization"] = "";
           store.dispatch(resetUserInfo());
           const cookies = new Cookies();
-          cookies.remove('refresh_token')
+          cookies.remove("refresh_token");
           return redirect(PATH_ROOT);
         },
       },
@@ -88,7 +107,6 @@ const router = createBrowserRouter([
       },
       {
         path: PATH_COMMUNITYDETAIL,
-        loader: communityDetailLoader,
         action: communityDetailAction,
         element: <CommunityDetail />,
       },
@@ -108,8 +126,8 @@ const router = createBrowserRouter([
         path: PATH_INTRODUCTION,
         element: <Introduction />,
       },
-    ]
+    ],
   },
 ]);
 
-export {router};
+export { router };
