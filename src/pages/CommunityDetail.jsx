@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { redirect, useLoaderData } from "react-router-dom";
+import { redirect, useParams } from "react-router-dom";
 import { Page, Badge, Line } from "@components/ui";
 import {
   UserImage,
@@ -11,18 +11,8 @@ import {
   CommentForm,
   CommentList,
 } from "@components/community";
-import { store, communityApi } from "@store";
+import { store, communityApi, useFetchArticleQuery } from "@store";
 import { PATH_COMMUNITY } from "@constants";
-
-async function loader({ params: { articleId } }) {
-  await new Promise((resolve) => setTimeout(resolve, 300));
-
-  const res = await store.dispatch(
-    communityApi.endpoints.fetchArticle.initiate(articleId)
-  );
-
-  return { data: res.data, articleId };
-}
 
 async function action({ request, params: { articleId } }) {
   const formData = await request.formData();
@@ -43,7 +33,6 @@ async function action({ request, params: { articleId } }) {
         })
       );
 
-      // await new Promise(resolve => setTimeout(resolve, 100))
       return null;
     }
   }
@@ -52,7 +41,6 @@ async function action({ request, params: { articleId } }) {
     if (data.hasOwnProperty("like")) {
       await store.dispatch(communityApi.endpoints.postLike.initiate(articleId));
 
-      // await new Promise(resolve => setTimeout(resolve, 100))
       return null;
     }
     if (data.hasOwnProperty("content") && data.state === "create") {
@@ -60,7 +48,6 @@ async function action({ request, params: { articleId } }) {
         communityApi.endpoints.createComment.initiate({ formData, articleId })
       );
 
-      // await new Promise(resolve => setTimeout(resolve, 100))
       return null;
     }
     if (data.hasOwnProperty("content") && data.state === "edit") {
@@ -72,28 +59,28 @@ async function action({ request, params: { articleId } }) {
         })
       );
 
-      // await new Promise(resolve => setTimeout(resolve, 100))
       return null;
     }
   }
 }
 
 function CommunityDetail() {
-  const {
-    data: {
-      category,
-      title,
-      content,
-      article_images,
-      user,
-      created_at,
-      comments,
-      like_users,
-    },
-    error,
-    articleId,
-  } = useLoaderData();
   const authenticatedUser = useSelector((state) => state.user);
+  const { articleId } = useParams();
+  const { data, error } = useFetchArticleQuery(articleId);
+
+  if (!data) return null;
+
+  const {
+    category,
+    title,
+    content,
+    article_images,
+    user,
+    created_at,
+    comments,
+    like_users,
+  } = data;
 
   return (
     <Page className="CommunityDetail">
@@ -142,4 +129,4 @@ function CommunityDetail() {
 }
 
 export default CommunityDetail;
-export { action, loader };
+export { action };
