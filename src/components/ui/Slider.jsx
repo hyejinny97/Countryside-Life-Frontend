@@ -79,7 +79,7 @@ function Slider({
         else if (currentSlide === 0 && idx === data.length) activeDot = true;
         else activeDot = idx === currentSlide;
       }
-      // 무한 슬라이드가 아닌 경우 또는 (first/last 제외한) 무한 슬라이드인 경우
+      // 무한 슬라이드가 아닌 경우
       else {
         activeDot = idx === currentSlide;
       }
