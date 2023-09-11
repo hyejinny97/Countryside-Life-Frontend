@@ -19,31 +19,51 @@ function Slider({
     // 현재 슬라이드로 이동
     sliderListEl.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-    // 스와이프 이벤트
+    // 스와이프 이벤트 - 마우스
     let mouseDownX, mouseUpX;
     const handleMouseDown = (e) => {
       if (e.button !== 0) return; // e.button = 0: 마우스 왼쪽
       mouseDownX = e.clientX;
     };
-    sliderListEl.addEventListener("mousedown", handleMouseDown);
 
     const handleMouseUp = (e) => {
       if (e.button !== 0) return; // e.button = 0: 마우스 왼쪽
       mouseUpX = e.clientX;
 
       const drag = mouseDownX - mouseUpX;
-      console.log(drag, window.innerWidth / 3);
-
       if (Math.abs(drag) < window.innerWidth / 3) return;
 
       if (drag > 0) return handleSlideMove(currentSlide + 1);
       else return handleSlideMove(currentSlide - 1);
     };
+
+    sliderListEl.addEventListener("mousedown", handleMouseDown);
     sliderListEl.addEventListener("mouseup", handleMouseUp);
+
+    // 스와이프 이벤트 - 손가락 터치
+    let touchStartX, touchEndX;
+    const handleTouchStart = (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+    };
+
+    const handleTouchEnd = (e) => {
+      touchEndX = e.changedTouches[0].clientX;
+
+      const drag = touchStartX - touchEndX;
+      if (Math.abs(drag) < window.innerWidth / 3) return;
+
+      if (drag > 0) return handleSlideMove(currentSlide + 1);
+      else return handleSlideMove(currentSlide - 1);
+    };
+
+    sliderListEl.addEventListener("touchend", handleTouchEnd);
+    sliderListEl.addEventListener("touchstart", handleTouchStart);
 
     return () => {
       sliderListEl.removeEventListener("mousedown", handleMouseDown);
       sliderListEl.removeEventListener("mouseup", handleMouseUp);
+      sliderListEl.removeEventListener("touchstart", handleTouchStart);
+      sliderListEl.removeEventListener("touchend", handleTouchEnd);
     };
   }, [currentSlide]);
 
