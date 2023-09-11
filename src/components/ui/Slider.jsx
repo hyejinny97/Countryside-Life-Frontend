@@ -14,12 +14,44 @@ function Slider({
   const sliderList = useRef();
 
   useEffect(() => {
-    sliderList.current.style.transform = `translateX(-${currentSlide * 100}%)`;
+    const sliderListEl = sliderList.current;
+
+    // 현재 슬라이드로 이동
+    sliderListEl.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+    // 스와이프 이벤트
+    let mouseDownX, mouseUpX;
+    const handleMouseDown = (e) => {
+      if (e.button !== 0) return; // e.button = 0: 마우스 왼쪽
+      mouseDownX = e.clientX;
+    };
+    sliderListEl.addEventListener("mousedown", handleMouseDown);
+
+    const handleMouseUp = (e) => {
+      if (e.button !== 0) return; // e.button = 0: 마우스 왼쪽
+      mouseUpX = e.clientX;
+
+      const drag = mouseDownX - mouseUpX;
+      console.log(drag, window.innerWidth / 3);
+
+      if (Math.abs(drag) < window.innerWidth / 3) return;
+
+      if (drag > 0) return handleSlideMove(currentSlide + 1);
+      else return handleSlideMove(currentSlide - 1);
+    };
+    sliderListEl.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      sliderListEl.removeEventListener("mousedown", handleMouseDown);
+      sliderListEl.removeEventListener("mouseup", handleMouseUp);
+    };
   }, [currentSlide]);
 
   useEffect(() => {
-    if (sliding)
-      sliderList.current.style.transition = `transform ${transitionTime}s`;
+    const sliderListEl = sliderList.current;
+
+    // 이동 효과 추가
+    if (sliding) sliderListEl.style.transition = `transform ${transitionTime}s`;
   }, []);
 
   let newData = data;

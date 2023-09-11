@@ -71,7 +71,7 @@ AutoPlaySlider.defaultProps = {
   sliding: true,
   transitionTime: 0.5,
   infinite: true,
-  intervalTime: 3,
+  intervalTime: 5,
 };
 
 export default AutoPlaySlider;
