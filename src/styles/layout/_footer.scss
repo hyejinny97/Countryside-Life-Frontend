@@ -1,57 +1,63 @@
-@import '../abstracts/variables';
+@import "../abstracts/variables";
 
 .Footer {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    height: 5rem;
-    border-top: 1px solid $secondary-light;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  height: 5rem;
+  border-top: 1px solid $secondary-light;
 
-    &__wrap {
-        display: grid;
-        grid-template-columns: 6rem 2fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        align-items: center;
+  &__wrap {
+    display: grid;
+    grid-template-columns: 6rem 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
 
-        // @media screen and (max-width: $sm) {
-        //     grid-template-columns: 6rem 1fr;
-        // }    
+    // @media screen and (max-width: $sm) {
+    //     grid-template-columns: 6rem 1fr;
+    // }
+  }
+
+  &__head {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 2;
+  }
+
+  &__logo {
+    height: 3rem;
+  }
+
+  &__body {
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 2;
+
+    & .Menu__item {
+      padding: 0 3vw;
+      font-size: 0.8rem;
     }
 
-    &__head {
-        grid-column: 1 / span 1;
-        grid-row: 1 / span 2;
+    @media screen and (max-width: $sm) {
+      grid-column: 2 / span 2;
+      grid-row: 1 / span 1;
     }
+  }
 
-    &__logo {
-        height: 3rem;
+  &__menu-item {
+    &--message {
+      cursor: pointer;
     }
+  }
 
-    &__body {
-        grid-column: 2 / span 2;
-        grid-row: 1 / span 2;
+  &__foot {
+    grid-column: 3 / span 1;
+    grid-row: 1 / span 2;
+    justify-self: end;
+    font-size: 0.8rem;
 
-        & .Menu__item {
-            padding: 0 3vw;
-            font-size: 0.8rem;
-        }
-
-        @media screen and (max-width: $sm) {
-            grid-column: 2 / span 2;
-            grid-row: 1 / span 1;
-        }
+    @media screen and (max-width: $sm) {
+      grid-column: 2 / span 2;
+      grid-row: 2 / span 1;
+      justify-self: start;
+      padding: 0 3vw;
     }
-
-    &__foot {
-        grid-column: 3 / span 1;
-        grid-row: 1 / span 2;
-        justify-self: end;
-        font-size: 0.8rem;
-
-        @media screen and (max-width: $sm) {
-            grid-column: 2 / span 2;
-            grid-row: 2 / span 1;
-            justify-self: start;
-            padding: 0 3vw;
-        }    
-    }
+  }
 }
