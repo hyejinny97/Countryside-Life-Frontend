@@ -13,6 +13,7 @@ import {
   CommunityDetail,
   Location,
   Introduction,
+  rootAction,
   signupAction,
   editProfileAction,
   changePasswordAction,
@@ -50,6 +51,7 @@ const router = createBrowserRouter([
   {
     path: PATH_ROOT,
     loader: rootLoader,
+    action: rootAction,
     element: <Root />,
     children: [
       {
